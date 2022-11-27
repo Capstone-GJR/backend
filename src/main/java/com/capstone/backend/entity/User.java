@@ -1,4 +1,4 @@
-package com.capstone.backend;
+package com.capstone.backend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
