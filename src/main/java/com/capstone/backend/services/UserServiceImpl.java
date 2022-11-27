@@ -1,8 +1,8 @@
 package com.capstone.backend.services;
 
 import com.capstone.backend.entity.User;
+import com.capstone.backend.exception.EntityNotFoundException;
 import com.capstone.backend.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
