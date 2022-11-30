@@ -16,7 +16,7 @@ public class UserController {
         return null;
     }
 
-    @GetMapping("/register")
+    @GetMapping("/user/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
         return null;
     }

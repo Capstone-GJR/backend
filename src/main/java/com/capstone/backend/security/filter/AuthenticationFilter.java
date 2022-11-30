@@ -1,8 +1,8 @@
 package com.capstone.backend.security.filter;
 
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.capstone.backend.entity.User;
 import com.capstone.backend.security.SecurityConstants;
 import com.capstone.backend.security.manager.CustomAuthenticationManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,15 +21,13 @@ import java.util.Date;
 
 @AllArgsConstructor
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
     private CustomAuthenticationManager authenticationManager;
-    // You should NOT place a doFilter above this method as it will mess up the authentication process.
+
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-            throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         try {
             User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
-            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
             return authenticationManager.authenticate(authentication);
         } catch (IOException e) {
             throw new RuntimeException();
@@ -52,4 +50,5 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         response.getWriter().write(failed.getMessage());
         response.getWriter().flush();
     }
-}
+
+} // Authentication Filter class
