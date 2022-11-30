@@ -15,15 +15,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Username cannot be blank")
+    @NotBlank(message = "email cannot be blank")
     @NonNull
     @Column(nullable = false)
-    String username;
+    String email;
 
     @NotBlank(message = "Password cannot be blank")
     @NonNull
     @Column(nullable = false)
     String password;
 
+    @NotBlank
+    @NonNull
+    @Column(nullable = false)
+    String firstName;
+
+    @NotBlank
+    @NonNull
+    @Column(nullable = false)
+    String lastName;
 
 }
