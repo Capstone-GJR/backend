@@ -1,8 +1,9 @@
 package com.capstone.backend.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
