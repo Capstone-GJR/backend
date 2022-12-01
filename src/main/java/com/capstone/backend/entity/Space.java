@@ -25,4 +25,9 @@ public class Space {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public Space(String name, String description, User user) {
+        this.name = name;
+        this.description = description;
+        this.user = user;
+    }
 }

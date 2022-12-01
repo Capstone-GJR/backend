@@ -10,11 +10,9 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 
 public class User {
-    public User() {
-        this.unassigned = new Space();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +39,7 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
+//    todo: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed.
     @Transient
     private Space unassigned;
 }
