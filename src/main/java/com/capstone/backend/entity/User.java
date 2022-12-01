@@ -10,8 +10,12 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class User {
+    public User() {
+        this.unassigned = new Space();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,21 +24,23 @@ public class User {
     @NonNull
     @Email
     @Column(nullable = false)
-    String email;
+    private String email;
 
     @NotBlank(message = "Password cannot be blank")
     @NonNull
     @Column(nullable = false)
-    String password;
+    private String password;
 
     @NotBlank
     @NonNull
     @Column(nullable = false)
-    String firstName;
+    private String firstName;
 
     @NotBlank
     @NonNull
     @Column(nullable = false)
-    String lastName;
+    private String lastName;
 
+    @Transient
+    private Space unassigned;
 }
