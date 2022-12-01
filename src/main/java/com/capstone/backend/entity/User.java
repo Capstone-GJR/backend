@@ -1,8 +1,8 @@
 package com.capstone.backend.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -18,6 +18,7 @@ public class User {
 
     @NotBlank(message = "email cannot be blank")
     @NonNull
+    @Email
     @Column(nullable = false)
     String email;
 
