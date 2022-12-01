@@ -3,6 +3,7 @@ package com.capstone.backend.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "components")
@@ -16,18 +17,36 @@ public class Component {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "Components must have names")
+    @NonNull
     @Column(nullable = false)
     private String name;
 
+//    ToDo: Optional? Allow this field to be blank
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false, columnDefinition = "boolean default false")
+//    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
+    @NonNull
+    @NotBlank(message = "must include at least one keyword")
+    private String keywords;
+
+    @Column(nullable = false)
+    private String color;
+
+    @Column(nullable = false)
+    private String fileStackImageURL;
+
+    @Column(nullable = false)
     boolean checkedOut;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space Space;
 
-//    in order to access all components by a user you would need to find... spaces owned by user - then all components that match those space ids
+//    Parent id = 0 if component is directly inside a space, Parent id = component_id, when the component is inside another component.
+    @NonNull
+    @Column(nullable = false)
+    private long parent_id;
+
 }
