@@ -19,6 +19,9 @@ public class Item {
     private String name;
 
     @Column(nullable = false)
+    private long value;
+
+    @Column(nullable = false)
     private String description;
 
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
@@ -34,7 +37,7 @@ public class Item {
 
     @Column(nullable = false)
     boolean checkedOut;
-//    value
+
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
