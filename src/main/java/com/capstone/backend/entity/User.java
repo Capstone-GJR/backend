@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "users")
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id

@@ -1,20 +1,33 @@
 package com.capstone.backend.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "components")
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 
 public class Component {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    boolean checkedOut;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "space_id", referencedColumnName = "id")
+    private Space Space;
+
+//    in order to access all components by a user you would need to find... spaces owned by user - then all components that match those space ids
 }
