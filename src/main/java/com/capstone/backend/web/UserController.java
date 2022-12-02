@@ -19,7 +19,6 @@ public class UserController {
 //    @GetMapping("/{id}") // functioning method - method below is experimental method
 //    public ResponseEntity<String> findById(@PathVariable Long id) {
 //        String username = userService.getUser(id).getEmail();
-////        TODO: update the response entity to include all information needed for the profile page.
 //        return new ResponseEntity<>(username, HttpStatus.OK);
 //    }
 
