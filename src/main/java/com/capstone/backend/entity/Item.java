@@ -3,7 +3,7 @@ package com.capstone.backend.entity;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-
+//TODO: default values for fields.
 @Entity
 @Table(name = "items")
 @Getter
@@ -37,7 +37,6 @@ public class Item {
 
     @Column(nullable = false)
     boolean checkedOut;
-
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
