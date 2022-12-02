@@ -23,10 +23,9 @@ public class SecurityConfig {
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
                 .csrf().disable()
-                .authorizeRequests()
+                .authorizeRequests(authorizeRequests -> authorizeRequests
                 .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll() // Allows anyone to make post request on the path sign-up/register
-                .anyRequest().authenticated() // requires that all requests (other than antMatcher specified requests) be authenticated
-                .and()
+                .anyRequest().authenticated() )// requires that all requests (other than antMatcher specified requests) be authenticated
                 .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
                 .addFilter(authenticationFilter)
                 .addFilterAfter(new JWTAuthorizationFilter(), AuthenticationFilter.class)

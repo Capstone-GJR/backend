@@ -16,16 +16,21 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     @Override
     public User getUser(Long id) {
         Optional<User> user = userRepository.findById(id);
         return unwrapUser(user, id);
     }
 
+    public User getUserProfile(Long id) {
+        Optional<User> userProfile = userRepository.findById(id);
+        return unwrapUser(userProfile, id);
+    }
+
     @Override
     public User getUser(String username) {
         Optional<User> user = userRepository.findByEmail(username);
-//        TODO: have this return a username without a password?
         return unwrapUser(user, username);
     }
 
