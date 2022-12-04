@@ -15,13 +15,9 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
-    UserService userService;
+    //TODO: LOGOUT
 
-//    @GetMapping("/{id}") // functioning method - method below is experimental method
-//    public ResponseEntity<String> findById(@PathVariable Long id) {
-//        String username = userService.getUser(id).getEmail();
-//        return new ResponseEntity<>(username, HttpStatus.OK);
-//    }
+    UserService userService;
 
 //Returns a user object with RESTRICTED for a password.
     @GetMapping("/profile/{id}")
@@ -36,5 +32,24 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+//TODO: UPDATE USER, what parms to pass?
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<User> updateUser() {
+
+        return new ResponseEntity<>(userService.updateUser(), HttpStatus.OK);
+    }
+
+//        @GetMapping("/{id}") // This method only returns the username. Not sure if this is useful or can be deleted.
+//        public ResponseEntity<String> findById(@PathVariable Long id) {
+//            String username = userService.getUser(id).getEmail();
+//            return new ResponseEntity<>(username, HttpStatus.OK);
+//        }
 
 }

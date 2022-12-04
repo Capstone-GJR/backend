@@ -1,6 +1,5 @@
 package com.capstone.backend.services;
 
-import com.capstone.backend.entity.Space;
 import com.capstone.backend.entity.User;
 import com.capstone.backend.exception.EntityNotFoundException;
 import com.capstone.backend.repository.UserRepository;
@@ -17,6 +16,19 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    //TODO: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed.
+    //      OR unassigned spaces get an id of 0?
+    @Override
+    public User registerUser(User user){
+        user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
+        return userRepository.save(user);
+    }
+
+//TODO: Make sure cascade type to delete all spaces, components, items associated with user.
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 
     @Override
     public User getUser(Long id) {
@@ -33,8 +45,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
-        user.setUnassigned(new Space());
         return userRepository.save(user);
+    }
+
+// Method Returns the User Object with password field filled as "RESTRICTED"
+    @Override
+    public User getUserProfile(Long id){
+        User user = getUser(id);
+        return new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName());
+    }
+
+//TODO: Update user logic.
+    @Override
+    public User updateUser() {
+       return null;
     }
 
     static User unwrapUser(Optional<User> entity, Long id) {
@@ -45,11 +69,5 @@ public class UserServiceImpl implements UserService {
     static User unwrapUser(Optional<User> entity, String email) {
         if (entity.isPresent()) return entity.get();
         else throw new EntityNotFoundException(email, User.class);
-    }
-    // TODO: Here is where I should specify how I want the user profile to be returned. Maybe make a field that is "user profile" - a copy of the user copy without the password?
-    public User getUserProfile(Long id){
-        User user = getUser(id);
-        User profile = new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getUnassigned());
-        return profile;
     }
 }
