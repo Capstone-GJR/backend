@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    public void updatePassword(Long id, String password) {
+        User user = getUser(id);
+        user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
+    }
+
     @Override
     public User getUser(Long id) {
         Optional<User> user = userRepository.findById(id);
@@ -55,13 +60,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUserProfile(Long id, String firstName, String lastName, String email) {
+    public User updateUserProfile(Long id, User userProfile) {
         Optional<User> user = userRepository.findById(id);
         User unwrappedUser = unwrapUser(user, id);
-        unwrappedUser.setFirstName(firstName);
-        unwrappedUser.setLastName(lastName);
-        unwrappedUser.setEmail(email);
-       return unwrappedUser;
+        unwrappedUser.setFirstName(userProfile.getFirstName());
+        unwrappedUser.setLastName(userProfile.getLastName());
+        unwrappedUser.setEmail(userProfile.getEmail());
+        return unwrappedUser;
     }
 
     static User unwrapUser(Optional<User> entity, Long id) {

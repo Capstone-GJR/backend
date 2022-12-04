@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @AllArgsConstructor
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 public class UserController {
 
 //TODO: LOGOUT
-//TODO: CHANGE PASSWORD
+
 
     UserService userService;
 
@@ -39,11 +38,17 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//TODO: UPDATE USER: Test... Request body not correct way to update.
+//TODO: UPDATE USER: How to get User object to be sent back without the password field, OR just send back an OK status. No need to send them the User right?
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<User> updateUser(@Valid @RequestBody String firstName, @RequestBody String lastName, @RequestBody String email, @PathVariable Long id) {
-        return new ResponseEntity<>(userService.updateUserProfile(id, firstName, lastName, email), HttpStatus.OK);
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
+        return new ResponseEntity<>(userService.updateUserProfile(id,user), HttpStatus.OK);
+    }
+
+    @PutMapping("/editPW/{id}")
+    public ResponseEntity<User> updatePassword(@RequestBody String password, @PathVariable Long id) {
+        userService.updatePassword(id, password);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 //        @GetMapping("/{id}") // This method only returns the username. Not sure if this is useful or can be deleted.

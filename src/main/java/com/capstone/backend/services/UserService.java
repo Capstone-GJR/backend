@@ -10,6 +10,7 @@ public interface UserService {
     User saveUser(User user);
     User registerUser(User user);
     void deleteUser(Long id);
-    User updateUserProfile(Long id, String firstName, String lastName, String email);
+    User updateUserProfile(Long id, User userProfile);
+    void updatePassword(Long id, String password);
 
 }
