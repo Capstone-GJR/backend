@@ -39,7 +39,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//TODO: UPDATE USER: Test
+//TODO: UPDATE USER: Test... Request body not correct way to update.
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<User> updateUser(@Valid @RequestBody String firstName, @RequestBody String lastName, @RequestBody String email, @PathVariable Long id) {
