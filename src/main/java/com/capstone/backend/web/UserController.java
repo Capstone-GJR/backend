@@ -15,7 +15,8 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
-    //TODO: LOGOUT
+//TODO: LOGOUT
+//TODO: CHANGE PASSWORD
 
     UserService userService;
 
@@ -38,12 +39,11 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//TODO: UPDATE USER, what parms to pass?
+//TODO: UPDATE USER: Test
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<User> updateUser() {
-
-        return new ResponseEntity<>(userService.updateUser(), HttpStatus.OK);
+    public ResponseEntity<User> updateUser(@Valid @RequestBody String firstName, @RequestBody String lastName, @RequestBody String email, @PathVariable Long id) {
+        return new ResponseEntity<>(userService.updateUserProfile(id, firstName, lastName, email), HttpStatus.OK);
     }
 
 //        @GetMapping("/{id}") // This method only returns the username. Not sure if this is useful or can be deleted.
