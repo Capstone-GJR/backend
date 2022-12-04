@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 
 public class User {
 
@@ -46,8 +47,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Space> spaces;
 
-//    todo: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed.
+//TODO: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed.
 //      OR unassigned spaces get an id of 0?
     @Transient
     private Space unassigned;
+
+
 }

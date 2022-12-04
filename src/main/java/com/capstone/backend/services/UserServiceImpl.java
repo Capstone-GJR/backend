@@ -23,16 +23,11 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findById(id);
         return unwrapUser(user, id);
     }
-// TODO: Here is where I should specify how I want the user profile to be returned. Maybe make a field that is "user profile" - a copy of the user copy without the password?
-    public User getUserProfile(Long id) {
-        Optional<User> userProfile = userRepository.findById(id);
-        return unwrapUser(userProfile, id);
-    }
 
     @Override
-    public User getUser(String username) {
-        Optional<User> user = userRepository.findByEmail(username);
-        return unwrapUser(user, username);
+    public User getUser(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return unwrapUser(user, email);
     }
 
     @Override
@@ -47,8 +42,14 @@ public class UserServiceImpl implements UserService {
         else throw new EntityNotFoundException(id, User.class);
     }
 
-    static User unwrapUser(Optional<User> entity, String username) {
+    static User unwrapUser(Optional<User> entity, String email) {
         if (entity.isPresent()) return entity.get();
-        else throw new EntityNotFoundException(username, User.class);
+        else throw new EntityNotFoundException(email, User.class);
     }
+    // TODO: Here is where I should specify how I want the user profile to be returned. Maybe make a field that is "user profile" - a copy of the user copy without the password?
+//    public User getUserProfile(Long id){
+//        User user = getUser(id);
+//        User profile = new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName());
+//        return profile;
+//    }
 }

@@ -23,12 +23,12 @@ public class UserController {
 //        return new ResponseEntity<>(username, HttpStatus.OK);
 //    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<String> findById(@PathVariable Long id) {
-        String username = userService.getUser(id).getEmail();
-        //        TODO: update the response entity to include all information needed for the profile page.
-        return new ResponseEntity<>(username, HttpStatus.OK);
-    }
+//Returns all the items needed for populating the profile.
+//    @GetMapping("/profile/{id}")
+//    public ResponseEntity<User> findById(@PathVariable Long id) {
+//        User profile = userService.getUserProfile(id);
+//        return new ResponseEntity<>(profile, HttpStatus.OK);
+//    }
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
