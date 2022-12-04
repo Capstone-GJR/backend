@@ -11,14 +11,22 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/user")
 public class UserController {
 
     UserService userService;
 
+//    @GetMapping("/{id}") // functioning method - method below is experimental method
+//    public ResponseEntity<String> findById(@PathVariable Long id) {
+//        String username = userService.getUser(id).getEmail();
+//        return new ResponseEntity<>(username, HttpStatus.OK);
+//    }
+
     @GetMapping("/{id}")
     public ResponseEntity<String> findById(@PathVariable Long id) {
         String username = userService.getUser(id).getEmail();
+        //        TODO: update the response entity to include all information needed for the profile page.
         return new ResponseEntity<>(username, HttpStatus.OK);
     }
 
@@ -27,4 +35,6 @@ public class UserController {
         userService.saveUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.capstone.backend.services;
 
+import com.capstone.backend.entity.Space;
 import com.capstone.backend.entity.User;
 import com.capstone.backend.exception.EntityNotFoundException;
 import com.capstone.backend.repository.UserRepository;
@@ -16,10 +17,16 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     @Override
     public User getUser(Long id) {
         Optional<User> user = userRepository.findById(id);
         return unwrapUser(user, id);
+    }
+// TODO: Here is where I should specify how I want the user profile to be returned. Maybe make a field that is "user profile" - a copy of the user copy without the password?
+    public User getUserProfile(Long id) {
+        Optional<User> userProfile = userRepository.findById(id);
+        return unwrapUser(userProfile, id);
     }
 
     @Override
@@ -31,12 +38,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
+        user.setUnassigned(new Space());
         return userRepository.save(user);
     }
+
     static User unwrapUser(Optional<User> entity, Long id) {
         if (entity.isPresent()) return entity.get();
         else throw new EntityNotFoundException(id, User.class);
     }
+
     static User unwrapUser(Optional<User> entity, String username) {
         if (entity.isPresent()) return entity.get();
         else throw new EntityNotFoundException(username, User.class);
