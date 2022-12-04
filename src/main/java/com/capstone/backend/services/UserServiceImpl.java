@@ -47,9 +47,9 @@ public class UserServiceImpl implements UserService {
         else throw new EntityNotFoundException(email, User.class);
     }
     // TODO: Here is where I should specify how I want the user profile to be returned. Maybe make a field that is "user profile" - a copy of the user copy without the password?
-//    public User getUserProfile(Long id){
-//        User user = getUser(id);
-//        User profile = new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName());
-//        return profile;
-//    }
+    public User getUserProfile(Long id){
+        User user = getUser(id);
+        User profile = new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getUnassigned());
+        return profile;
+    }
 }

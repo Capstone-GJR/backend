@@ -14,9 +14,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 
 public class User {
+//Constructor for user Profile
+    public User(long id, @NonNull String email, @NonNull String firstName, @NonNull String lastName, Space unassigned) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.unassigned = unassigned;
+        this.password = "RESTRICTED";
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
