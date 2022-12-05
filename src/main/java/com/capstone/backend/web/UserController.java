@@ -45,17 +45,10 @@ public class UserController {
         return new ResponseEntity<>(userService.updateUserProfile(id,user), HttpStatus.OK);
     }
 
-//    TODO: NOT WORKING
-    @PutMapping("/editPW/{id}")
-    public ResponseEntity<User> updatePassword(@RequestBody String password, @PathVariable Long id) {
-        userService.updatePassword(id, password);
+    @PutMapping("/editPW")
+    public ResponseEntity<User> updatePassword(@RequestBody User userNewPass) {
+        userService.updatePassword(userNewPass);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-//        @GetMapping("/{id}") // This method only returns the username. Not sure if this is useful or can be deleted.
-//        public ResponseEntity<String> findById(@PathVariable Long id) {
-//            String username = userService.getUser(id).getEmail();
-//            return new ResponseEntity<>(username, HttpStatus.OK);
-//        }
 
 }

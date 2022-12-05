@@ -35,9 +35,11 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    public void updatePassword(Long id, String password) {
-        User user = getUser(id);
-        user.setPassword((bCryptPasswordEncoder.encode(password)));
+    public void updatePassword(User userNewPass) {
+        Long id = userNewPass.getId();
+        User dbUser = getUser(id);
+        dbUser.setPassword(userNewPass.getPassword());
+       saveUser(dbUser);
     }
 
     @Override
@@ -53,6 +55,7 @@ public class UserServiceImpl implements UserService {
     }
 
 // Method Returns the User Object with password field filled as "RESTRICTED"
+//    FIXME: There has to be a better way to do this.
     @Override
     public User getUserProfile(Long id){
         User user = getUser(id);
