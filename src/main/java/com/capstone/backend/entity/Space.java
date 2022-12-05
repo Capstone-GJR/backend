@@ -1,5 +1,6 @@
 package com.capstone.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -42,6 +43,7 @@ public class Space {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("password")
     private User user;
 
 
