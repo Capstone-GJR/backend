@@ -22,7 +22,6 @@ public class UserController {
     ModelMapper modelMapper;
     UserService userService;
 
-//Returns a user object with RESTRICTED for a password.
     @GetMapping("/profile/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
         User profile = userService.getUserProfile(id);
@@ -33,7 +32,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
         userService.saveUser(user);
-//        Space unassignedSpace = new Space(""); // pass in newUser id when you create a newSpace
+//TODO:  Space unassignedSpace = new Space(""); // pass in newUser id when you create a newSpace
 //        save space with space service
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -47,8 +46,9 @@ public class UserController {
 //TODO: UPDATE USER: How to get User object to be sent back without the password field, OR just send back an OK status. No need to send them the User right?
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
-        return new ResponseEntity<>(userService.updateUserProfile(id,user), HttpStatus.OK);
+    public ResponseEntity<UserDTO> updateUser(@RequestBody User user, @PathVariable Long id) {
+        UserDTO updatedProfile = modelMapper.map((userService.updateUserProfile(id,user)), UserDTO.class);
+        return new ResponseEntity<>(updatedProfile, HttpStatus.OK);
     }
 
     @PutMapping("/editPW")
