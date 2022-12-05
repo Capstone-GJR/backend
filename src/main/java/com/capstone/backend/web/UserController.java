@@ -1,8 +1,10 @@
 package com.capstone.backend.web;
 
+import com.capstone.backend.dto.UserDTO;
 import com.capstone.backend.entity.User;
 import com.capstone.backend.services.UserService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,20 +19,20 @@ public class UserController {
 
 //TODO: LOGOUT
 
-
+    ModelMapper modelMapper;
     UserService userService;
 
-//Returns a user object with RESTRICTED for a password.
     @GetMapping("/profile/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
         User profile = userService.getUserProfile(id);
-        return new ResponseEntity<>(profile, HttpStatus.OK);
+        UserDTO userProfileDTO = modelMapper.map(profile, UserDTO.class);
+        return new ResponseEntity<>(userProfileDTO, HttpStatus.OK);
     }
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
         userService.saveUser(user);
-//        Space unassignedSpace = new Space(""); // pass in newUser id when you create a newSpace
+//TODO:  Space unassignedSpace = new Space(""); // pass in newUser id when you create a newSpace
 //        save space with space service
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -44,8 +46,9 @@ public class UserController {
 //TODO: UPDATE USER: How to get User object to be sent back without the password field, OR just send back an OK status. No need to send them the User right?
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
-        return new ResponseEntity<>(userService.updateUserProfile(id,user), HttpStatus.OK);
+    public ResponseEntity<UserDTO> updateUser(@RequestBody User user, @PathVariable Long id) {
+        UserDTO updatedProfile = modelMapper.map((userService.updateUserProfile(id,user)), UserDTO.class);
+        return new ResponseEntity<>(updatedProfile, HttpStatus.OK);
     }
 
     @PutMapping("/editPW")
