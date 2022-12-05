@@ -16,6 +16,7 @@ public class SpaceController {
 
     SpaceService spaceService;
 
+//TODO: How to handle exception if no user with that id exists. ?? Check if user exists before checking if space exists?
     @GetMapping("/{id}")
     public ResponseEntity<Space> findById(@PathVariable Long id, @PathVariable Long user_id) {
         Space space = spaceService.getSpace(id);

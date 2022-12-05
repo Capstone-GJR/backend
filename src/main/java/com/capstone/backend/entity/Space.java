@@ -25,7 +25,7 @@ public class Space {
     @Column(nullable = true)
     private String description;
 
-    //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
+//ToDo: Make this a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
     private String keywords;

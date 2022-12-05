@@ -18,6 +18,7 @@ public class SpaceServiceImp implements SpaceService {
 
     @Override
     public Space getSpace(Long id) {
+
         Optional<Space> space = spaceRepository.findById(id);
         return unwrapSpace(space, id);
     }
