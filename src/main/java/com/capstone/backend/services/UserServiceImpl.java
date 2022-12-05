@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     public void updatePassword(Long id, String password) {
         User user = getUser(id);
-        user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
+        user.setPassword((bCryptPasswordEncoder.encode(password)));
     }
 
     @Override
