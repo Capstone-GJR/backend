@@ -45,6 +45,7 @@ public class UserController {
         return new ResponseEntity<>(userService.updateUserProfile(id,user), HttpStatus.OK);
     }
 
+//    TODO: NOT WORKING
     @PutMapping("/editPW/{id}")
     public ResponseEntity<User> updatePassword(@RequestBody String password, @PathVariable Long id) {
         userService.updatePassword(id, password);
