@@ -16,7 +16,7 @@ import java.util.List;
 
 public class User {
 //Constructor for user Profile
-//    FIXME: Confirm that this is the best way to do this. Should I be creating an object that exists without the password at all instead?
+//FIXME: Create DTO class and convert to objects being sent/received as DTO
     public User(long id, @NonNull String email, @NonNull String firstName, @NonNull String lastName) {
         this.id = id;
         this.email = email;
@@ -35,7 +35,7 @@ public class User {
     @Email
     @Column(nullable = false)
     private String email;
-
+    @JsonIgnore
     @NotBlank(message = "Password cannot be blank")
     @NonNull
     @Column(nullable = false)

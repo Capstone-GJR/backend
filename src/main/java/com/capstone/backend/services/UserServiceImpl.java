@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
         User user = getUser(id);
         return new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName());
     }
-
+// Make sure this is working
     @Override
     public User updateUserProfile(Long id, User userProfile) {
         Optional<User> user = userRepository.findById(id);

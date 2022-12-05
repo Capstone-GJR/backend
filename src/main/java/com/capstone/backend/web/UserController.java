@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 @AllArgsConstructor
@@ -29,6 +30,8 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
         userService.saveUser(user);
+//        Space unassignedSpace = new Space(""); // pass in newUser id when you create a newSpace
+//        save space with space service
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
