@@ -32,8 +32,8 @@ public class Space {
 
 //    Default color value - So that we have a fallback if user does not want to upload an img and also if issue retrieving img.
     @NonNull
-    @Column(nullable = false, columnDefinition = "default 'no image")
-    private String fileStackImgURL;
+    @Column(name = "file_stack_URL", nullable = false, columnDefinition = "default 'no image")
+    private String fileStackURL;
 
 //    ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value?
     @NonNull

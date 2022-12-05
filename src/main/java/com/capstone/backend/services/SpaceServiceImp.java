@@ -23,7 +23,8 @@ public class SpaceServiceImp implements SpaceService {
     }
 
     @Override
-    public Space saveSpace(Space space) {
+    public Space saveSpace(Space space, Long user_id) {
+        space.setUser(userService.getUser(user_id));
         return spaceRepository.save(space);
     }
 

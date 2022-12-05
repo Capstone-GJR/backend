@@ -4,5 +4,5 @@ import com.capstone.backend.entity.Space;
 
 public interface SpaceService {
     Space getSpace(Long id);
-    Space saveSpace(Space space);
+    Space saveSpace(Space space, Long user_id);
 }

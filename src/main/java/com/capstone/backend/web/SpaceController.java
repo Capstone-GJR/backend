@@ -12,19 +12,19 @@ import javax.validation.Valid;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/space")
+@RequestMapping("/{user_id}/space")
 public class SpaceController {
 
     SpaceService spaceService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Space> findById(@PathVariable Long id) {
+    public ResponseEntity<Space> findById(@PathVariable Long id, @PathVariable Long user_id) {
         Space space = spaceService.getSpace(id);
         return new ResponseEntity<>(space, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Space> createSpace(@Valid@RequestBody Space space) {
-        return new ResponseEntity<>((spaceService.saveSpace(space)), HttpStatus.CREATED);
+    public ResponseEntity<Space> createSpace(@Valid@RequestBody Space space, @PathVariable Long user_id) {
+        return new ResponseEntity<>((spaceService.saveSpace(space, user_id)), HttpStatus.CREATED);
     }
 }
