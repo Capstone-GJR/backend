@@ -1,8 +1,10 @@
 package com.capstone.backend.web;
 
+import com.capstone.backend.dto.UserDTO;
 import com.capstone.backend.entity.User;
 import com.capstone.backend.services.UserService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +19,15 @@ public class UserController {
 
 //TODO: LOGOUT
 
-
+    ModelMapper modelMapper;
     UserService userService;
 
 //Returns a user object with RESTRICTED for a password.
     @GetMapping("/profile/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
         User profile = userService.getUserProfile(id);
-        return new ResponseEntity<>(profile, HttpStatus.OK);
+        UserDTO userProfileDTO = modelMapper.map(profile, UserDTO.class);
+        return new ResponseEntity<>(userProfileDTO, HttpStatus.OK);
     }
 
     @PostMapping("/register")
