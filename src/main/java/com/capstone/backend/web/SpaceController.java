@@ -1,0 +1,30 @@
+package com.capstone.backend.web;
+
+import com.capstone.backend.entity.Space;
+import com.capstone.backend.services.SpaceService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+@RestController
+@AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/space")
+public class SpaceController {
+
+    SpaceService spaceService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Space> findById(@PathVariable Long id) {
+        Space space = spaceService.getSpace(id);
+        return new ResponseEntity<>(space, HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Space> createSpace(@Valid@RequestBody Space space) {
+        return new ResponseEntity<>((spaceService.saveSpace(space)), HttpStatus.CREATED);
+    }
+}

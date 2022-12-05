@@ -22,7 +22,7 @@ public class Space {
     private String name;
 
 //    TODO: Should this be an optional field? AKA nullable = true? or how do I do this.
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "default 'description")
     private String description;
 
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
@@ -32,12 +32,12 @@ public class Space {
 
 //    Default color value - So that we have a fallback if user does not want to upload an img and also if issue retrieving img.
     @NonNull
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "default 'no image")
     private String fileStackImgURL;
 
 //    ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value?
     @NonNull
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "default 'space")
     private String color;
 
     @ManyToOne(optional = false)
