@@ -21,23 +21,23 @@ public class Space {
     @Column(nullable = false)
     private String name;
 
-//    TODO: Should this be an optional field? AKA nullable = true? or how do I do this.
-    @Column(nullable = false, columnDefinition = "default 'description")
+    //    TODO: Should this be an optional field? AKA nullable = true? or how do I do this.
+    @Column(nullable = false)
     private String description;
 
-//    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
+    //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-//    Default color value - So that we have a fallback if user does not want to upload an img and also if issue retrieving img.
+    //    Default color value - So that we have a fallback if user does not want to upload an img and also if issue retrieving img.
     @NonNull
-    @Column(name = "file_stack_URL", nullable = false, columnDefinition = "default 'no image")
+    @Column(name = "fileStackURL", nullable = false, columnDefinition = "varchar(255) default 'no url'")
     private String fileStackURL;
 
-//    ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value?
+    //    ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value?
     @NonNull
-    @Column(nullable = false, columnDefinition = "default 'space")
+    @Column(nullable = false)
     private String color;
 
     @ManyToOne(optional = false)
