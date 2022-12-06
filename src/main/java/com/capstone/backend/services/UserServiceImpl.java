@@ -54,12 +54,6 @@ public class UserServiceImpl implements UserService {
         return unwrapUser(user, email);
     }
 
-// Method Returns the User Object with password field filled as "RESTRICTED"
-//    FIXME: There has to be a better way to do this.
-    @Override
-    public User getUserProfile(Long id){
-        return getUser(id);
-    }
 // Make sure this is working
     @Override
     public User updateUserProfile(Long id, User userProfile) {
