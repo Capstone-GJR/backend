@@ -2,13 +2,11 @@ package com.capstone.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@DynamicUpdate
 @Table(name = "spaces")
 @Getter
 @Setter

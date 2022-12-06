@@ -35,7 +35,7 @@ public class SpaceController {
         return new ResponseEntity<>(allSpaces, HttpStatus.OK);
     }
 
-//TODO: Request body must include all fields except id and user?
+//TODO: Request body must include all fields except id and user? - Look into Dynamic Update for passing in only updated values.
     @PutMapping("/edit/{id}")
     public ResponseEntity<Space> editSpace (@PathVariable(name = "user_id") Long user_id, @PathVariable(name = "id") Long id, @RequestBody Space space) {
         Space editedSpace = spaceService.editSpace(id, space, user_id);
