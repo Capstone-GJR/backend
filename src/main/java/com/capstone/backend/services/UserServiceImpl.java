@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserProfile(Long id){
         User user = getUser(id);
-        return new User(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName());
+        return new User(
     }
 // Make sure this is working
     @Override

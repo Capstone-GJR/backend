@@ -6,6 +6,7 @@ import com.capstone.backend.repository.SpaceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -18,9 +19,13 @@ public class SpaceServiceImp implements SpaceService {
 
     @Override
     public Space getSpace(Long id) {
-
         Optional<Space> space = spaceRepository.findById(id);
         return unwrapSpace(space, id);
+    }
+
+    @Override
+    public List<Space> getAllSpaces(Long user_id) {
+        return spaceRepository.findByUserId(user_id);
     }
 
     @Override
