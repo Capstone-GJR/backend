@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    //TODO: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed OR unassigned spaces get an id of 0?
+//TODO: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed OR unassigned spaces get an id of 0?
 //TODO: Combine register and save into one. No need for both.
     @Override
     public User registerUser(User user){
@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
         unwrappedUser.setEmail(userProfile.getEmail());
         return unwrappedUser;
     }
+
 
     static User unwrapUser(Optional<User> entity, Long id) {
         if (entity.isPresent()) return entity.get();

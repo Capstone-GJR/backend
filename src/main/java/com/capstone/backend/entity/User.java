@@ -15,16 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 
 public class User {
-//Constructor for user Profile
-//FIXME: Create DTO class and convert to objects being sent/received as DTO
-    public User(long id, @NonNull String email, @NonNull String firstName, @NonNull String lastName) {
-        this.id = id;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-//        this.unassigned = unassigned;
-        this.password = "RESTRICTED";
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +25,7 @@ public class User {
     @Email
     @Column(nullable = false)
     private String email;
-    @JsonIgnore
+
     @NotBlank(message = "Password cannot be blank")
     @NonNull
     @Column(nullable = false)

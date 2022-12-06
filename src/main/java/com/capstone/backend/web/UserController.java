@@ -43,8 +43,6 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//TODO: UPDATE USER: How to get User object to be sent back without the password field, OR just send back an OK status. No need to send them the User right?
-
     @PutMapping("/edit/{id}")
     public ResponseEntity<UserDTO> updateUser(@RequestBody User user, @PathVariable Long id) {
         UserDTO updatedProfile = modelMapper.map((userService.updateUserProfile(id,user)), UserDTO.class);

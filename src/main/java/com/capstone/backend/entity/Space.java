@@ -1,5 +1,6 @@
 package com.capstone.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,27 +22,24 @@ public class Space {
     @Column(nullable = false)
     private String name;
 
-//    TODO: Should this be an optional field? AKA nullable = true? or how do I do this.
-    @Column(nullable = false)
-    private String description;
 
-//    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
+//ToDo: Make this a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-//    Default color value - So that we have a fallback if user does not want to upload an img and also if issue retrieving img.
-    @NonNull
-    @Column(nullable = false)
-    private String fileStackImgURL;
+// Nullable = optional field. if no image color with display instead.
+    @Column(name = "fileStackURL", nullable = true)
+    private String fileStackURL;
 
-//    ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value?
+//ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value? Change default value to a hex-code? get with guys on this.
     @NonNull
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(255) default 'space'")
     private String color;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("password")
     private User user;
 
 
