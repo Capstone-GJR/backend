@@ -48,9 +48,9 @@ public class ItemServiceImp implements ItemService{
         dbItem.setColor(item.getColor());
         dbItem.setFileStackUrl(item.getFileStackUrl());
         dbItem.setCheckedOut(item.isCheckedOut());
-        dbItem.setSpace(item.getSpace());
         dbItem.setComponent(item.getComponent());
-        return null;
+        dbItem.setValue(item.getValue());
+        return saveItem(dbItem, dbItem.getSpace().getId());
     }
 
     @Override
