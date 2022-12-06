@@ -58,8 +58,7 @@ public class UserServiceImpl implements UserService {
 //    FIXME: There has to be a better way to do this.
     @Override
     public User getUserProfile(Long id){
-        User user = getUser(id);
-        return new User(
+        return getUser(id);
     }
 // Make sure this is working
     @Override
