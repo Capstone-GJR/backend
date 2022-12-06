@@ -46,6 +46,11 @@ public class SpaceServiceImp implements SpaceService {
         return spaceRepository.save(space);
     }
 
+    @Override
+    public void deleteSpace(Long id) {
+        spaceRepository.deleteById(id);
+    }
+
     static Space unwrapSpace(Optional<Space> entity, Long id) {
         if (entity.isPresent()) return entity.get();
         else throw new EntityNotFoundException(id, Space.class);

@@ -41,4 +41,10 @@ public class SpaceController {
         Space editedSpace = spaceService.editSpace(id, space, user_id);
         return new ResponseEntity<>(editedSpace, HttpStatus.OK);
     }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<Space> deleteSpace (@PathVariable Long user_id, @PathVariable Long id) {
+        spaceService.deleteSpace(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

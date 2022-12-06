@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface SpaceRepository extends CrudRepository<Space, Long> {
     Optional<Space> findById(Long id);
     List<Space> findByUserId(Long user_id);
+    void deleteById(Long id);
 }
