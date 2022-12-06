@@ -22,7 +22,7 @@ public class UserController {
     ModelMapper modelMapper;
     UserService userService;
 
-    @GetMapping("/profile/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
         User profile = userService.getUserProfile(id);
         UserDTO userProfileDTO = modelMapper.map(profile, UserDTO.class);
@@ -42,8 +42,6 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-//TODO: UPDATE USER: How to get User object to be sent back without the password field, OR just send back an OK status. No need to send them the User right?
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<UserDTO> updateUser(@RequestBody User user, @PathVariable Long id) {

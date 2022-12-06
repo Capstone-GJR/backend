@@ -21,6 +21,7 @@ public class Space {
     @Column(nullable = false)
     private String name;
 
+//TODO: Combine description and keywords? maybe just for Spaces?
 // Nullable = it is an optional field. blank descriptions will have Null values.
     @Column(nullable = true)
     private String description;
