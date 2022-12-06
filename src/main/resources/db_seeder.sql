@@ -1,4 +1,7 @@
+DROP DATABASE traqura_db;
+CREATE DATABASE traqura_db;
 USE traqura_db;
+
 
 INSERT INTO users (email, first_name, last_name, password)
 VALUES
@@ -11,12 +14,18 @@ INSERT INTO spaces (name, keywords, file_stack_url, color, user_id)
 VALUES
     ('living room', 'living room family room', 'no image', 'pink', 4),
     ('front closet', 'closet, coats', 'no image', 'purple', 4),
-    ('kitchen', 'kitchen', 'no image', 'blue', 4);
+    ('kitchen', 'kitchen', 'no image', 'blue', 4),
+    ('bathroom', 'bathroom', 'fakeurl', 'purple', 4);
 
 INSERT INTO components (name, keywords, color, file_stack_url, checked_out, parent_id, space_id)
 VALUES
-    ('sofa', 'red sofa sectional', 'red', 'wwww.fakeurl.com', 0, 0, 1),
-    ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 'purple', 'no image', 0, 0, 2);
+    ('component1', 'bathroom supplies', 'purple', 'no image', 0, 0, 4),
+    ('component2', 'kitchen supplies', 'blue', 'fakeurl', 0, 0, 3);
+
+INSERT INTO items (name, keywords, value, color, file_stack_url, checked_out, space_id)
+VALUES
+    ('sofa', 'red sofa sectional', 1000, 'red', 'wwww.fakeurl.com', 0,  1),
+    ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 3, 'purple', 'no image', 0, 4);
 
 
 

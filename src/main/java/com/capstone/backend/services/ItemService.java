@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ItemService {
     Item getItem(Long id);
-    Item saveItem(Item item);
+    Item saveItem(Item item, Long space_id);
     List<Item> getAllItemsByComponent(Long component_id);
     List<Item> getAllItemsBySpace(Long space_id);
     Item editItem(Long id, Item item);

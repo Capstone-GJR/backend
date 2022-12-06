@@ -25,7 +25,8 @@ public class ItemServiceImp implements ItemService{
     }
 
     @Override
-    public Item saveItem(Item item) {
+    public Item saveItem(Item item, Long space_id) {
+        item.setSpace(spaceService.getSpace(space_id));
         return itemRepository.save(item);
     }
 

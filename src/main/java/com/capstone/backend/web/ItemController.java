@@ -18,9 +18,10 @@ public class ItemController {
 
     ItemService itemService;
 
-    @PostMapping("/add")
-    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
-        return new ResponseEntity<>((itemService.saveItem(item)), HttpStatus.CREATED);
+//Cannot read values of spaceID and componentID when passed in Request body
+    @PostMapping("/add/space{space_id}")
+    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item, @PathVariable Long space_id) {
+        return new ResponseEntity<>((itemService.saveItem(item, space_id)), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -29,13 +30,14 @@ public class ItemController {
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
-    @GetMapping("/all/component{id}")
+    @GetMapping("/all/component/{component_id}")
     public ResponseEntity<List<Item>> getAllByComponentId (@PathVariable Long component_id) {
         List<Item> allItemsInComponent = itemService.getAllItemsByComponent(component_id);
         return new ResponseEntity<>(allItemsInComponent, HttpStatus.OK);
     }
 
-    @GetMapping("/all/space{id}")
+// FIXME : returning an empty array
+    @GetMapping("/all/space/{space_id}")
     public ResponseEntity<List<Item>> getAllBySpaceId (@PathVariable Long space_id) {
         List<Item> allItemsInSpace = itemService.getAllItemsByComponent(space_id);
         return new ResponseEntity<>(allItemsInSpace, HttpStatus.OK);

@@ -41,7 +41,7 @@ public class Item {
 
 //    TODO: Is there a way to make this field optional instead of assigning it 0 if inside a space directly.
 // Enter component id of 0 if this item is inside a space directly.
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "component_id", referencedColumnName = "id")
     private Component component;
 
