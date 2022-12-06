@@ -21,16 +21,13 @@ public class Item {
     @Column(nullable = false)
     private long value;
 
-    @Column(nullable = false)
-    private String description;
-
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
     @Column(nullable = false)
-    private String fileStackImageURL;
+    private String fileStackUrl;
 
     @Column(nullable = false)
     private String color;
