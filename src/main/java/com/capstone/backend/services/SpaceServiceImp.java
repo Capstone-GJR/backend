@@ -30,7 +30,7 @@ public class SpaceServiceImp implements SpaceService {
         dbSpace.setName(space.getName());
         dbSpace.setKeywords(space.getKeywords());
         dbSpace.setColor(space.getColor());
-        dbSpace.setFileStackURL(space.getFileStackURL());
+        dbSpace.setFileStackUrl(space.getFileStackUrl());
         saveSpace(dbSpace, user_id);
         return dbSpace;
     }

@@ -22,10 +22,6 @@ public class Component {
     @Column(nullable = false)
     private String name;
 
-//    ToDo: Optional? Allow this field to be blank
-    @Column(nullable = false)
-    private String description;
-
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
@@ -35,14 +31,14 @@ public class Component {
     private String color;
 
     @Column(nullable = false)
-    private String fileStackImageURL;
+    private String fileStackUrl;
 
     @Column(nullable = false)
     boolean checkedOut;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
-    private Space Space;
+    private Space space;
 
 //    Parent id = 0 if component is directly inside a space, Parent id = component_id, when the component is inside another component.
     @NonNull
