@@ -20,7 +20,19 @@ public class SpaceServiceImp implements SpaceService {
     @Override
     public Space getSpace(Long id) {
         Optional<Space> space = spaceRepository.findById(id);
+        unwrapSpace(space, id);
         return unwrapSpace(space, id);
+    }
+
+
+    public Space editSpace(Long id, Space space, Long user_id) {
+        Space dbSpace = getSpace(id);
+        dbSpace.setName(space.getName());
+        dbSpace.setKeywords(space.getKeywords());
+        dbSpace.setColor(space.getColor());
+        dbSpace.setFileStackURL(space.getFileStackURL());
+        saveSpace(dbSpace, user_id);
+        return dbSpace;
     }
 
     @Override

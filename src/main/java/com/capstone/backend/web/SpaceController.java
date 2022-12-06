@@ -14,6 +14,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/{user_id}/space")
 public class SpaceController {
+//TODO: Find by keyword/search
 
     SpaceService spaceService;
 
@@ -32,5 +33,12 @@ public class SpaceController {
     public ResponseEntity<List<Space>> getAllByUserID (@PathVariable Long user_id) {
         List<Space> allSpaces = spaceService.getAllSpaces(user_id);
         return new ResponseEntity<>(allSpaces, HttpStatus.OK);
+    }
+
+//TODO: Request body must include all fields except id and user?
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Space> editSpace (@PathVariable(name = "user_id") Long user_id, @PathVariable(name = "id") Long id, @RequestBody Space space) {
+        Space editedSpace = spaceService.editSpace(id, space, user_id);
+        return new ResponseEntity<>(editedSpace, HttpStatus.OK);
     }
 }

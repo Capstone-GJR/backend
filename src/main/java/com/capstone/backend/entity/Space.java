@@ -2,10 +2,13 @@ package com.capstone.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@DynamicUpdate
 @Table(name = "spaces")
 @Getter
 @Setter
@@ -21,10 +24,6 @@ public class Space {
     @Column(nullable = false)
     private String name;
 
-//TODO: Combine description and keywords? maybe just for Spaces?
-// Nullable = it is an optional field. blank descriptions will have Null values.
-    @Column(nullable = true)
-    private String description;
 
 //ToDo: Make this a List<String> ... Which would be more easily searchable?
     @NonNull
