@@ -29,13 +29,6 @@ public class UserController {
         User fullUser = userService.getUser(user.getName());
         return modelMapper.map(fullUser, UserDTO.class);
     }
-//The above method makes this one useless
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
-        User profile = userService.getUser(id);
-        UserDTO userProfileDTO = modelMapper.map(profile, UserDTO.class);
-        return new ResponseEntity<>(userProfileDTO, HttpStatus.OK);
-    }
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
