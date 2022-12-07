@@ -24,7 +24,7 @@ public class ComponentController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Component> getById(@PathVariable Long id, @PathVariable Long space_id) {
+    public ResponseEntity<Component> getById(@PathVariable Long id) {
         Component component = componentService.getComponent(id);
         return new ResponseEntity<>(component, HttpStatus.OK);
     }
