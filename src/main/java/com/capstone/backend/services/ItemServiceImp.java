@@ -15,7 +15,7 @@ import java.util.Optional;
 public class ItemServiceImp implements ItemService{
 
     ItemRepository itemRepository;
-    ComponentService componentService;
+    ToteService toteService;
     SpaceService spaceService;
 
     @Override
@@ -31,8 +31,8 @@ public class ItemServiceImp implements ItemService{
     }
 
     @Override
-    public List<Item> getAllItemsByComponent(Long component_id) {
-        return itemRepository.findByComponentId(component_id);
+    public List<Item> getAllItemsByTote(Long tote_id) {
+        return itemRepository.findByToteId(tote_id);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ItemServiceImp implements ItemService{
         dbItem.setColor(item.getColor());
         dbItem.setFileStackUrl(item.getFileStackUrl());
         dbItem.setCheckedOut(item.isCheckedOut());
-        dbItem.setComponent(item.getComponent());
+        dbItem.setTote(item.getTote());
         dbItem.setValue(item.getValue());
         return saveItem(dbItem, dbItem.getSpace().getId());
     }
