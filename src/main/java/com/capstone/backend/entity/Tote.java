@@ -6,18 +6,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "components")
+@Table(name = "totes")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Component {
+public class Tote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Components must have names")
+    @NotBlank(message = "Totes must have names")
     @NonNull
     @Column(nullable = false)
     private String name;
@@ -40,7 +40,7 @@ public class Component {
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space space;
 
-//    Parent id = 0 if component is directly inside a space, Parent id = component_id, when the component is inside another component.
+//    Parent id = 0 if tote is directly inside a space, Parent id = tote_id, when the tote is inside another tote.
     @NonNull
     @Column(nullable = false)
     private long parent_id;

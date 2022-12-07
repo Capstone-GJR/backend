@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-//TODO: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into components or spaces can be placed OR unassigned spaces get an id of 0?
+//TODO: Each user upon registration should be assigned a "unassigned space" where items that are not sorted into totes or spaces can be placed OR unassigned spaces get an id of 0?
 //TODO: Combine register and save into one. No need for both.
     @Override
     public User registerUser(User user){
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-//TODO: Make sure cascade type to delete all spaces, components, items associated with user.
+//TODO: Make sure cascade type to delete all spaces, totes, items associated with user.
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);

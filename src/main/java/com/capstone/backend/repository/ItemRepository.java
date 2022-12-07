@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface ItemRepository extends CrudRepository<Item, Long> {
     Optional<Item> findById(Long id);
     List<Item> findBySpaceId(Long space_id);
-    List<Item> findByComponentId(Long component_id);
+    List<Item> findByToteId(Long tote_id);
     void deleteById(Long id);
 }
