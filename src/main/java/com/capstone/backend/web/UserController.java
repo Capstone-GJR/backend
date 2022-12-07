@@ -1,7 +1,9 @@
 package com.capstone.backend.web;
 
 import com.capstone.backend.dto.UserDTO;
+import com.capstone.backend.entity.Space;
 import com.capstone.backend.entity.User;
+import com.capstone.backend.services.SpaceService;
 import com.capstone.backend.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,6 +24,7 @@ public class UserController {
 
     ModelMapper modelMapper;
     UserService userService;
+    SpaceService spaceService;
 
 //Grabs the user information based on the authenticated user so no need to use the id in the path to get user profile
     @GetMapping("/")
@@ -32,9 +35,11 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
+        Space unassigned = new Space();
+        unassigned.setName("unassigned");
+        unassigned.setKeywords("unassigned");
         userService.saveUser(user);
-//TODO:  Space unassignedSpace = new Space(""); // pass in newUser id when you create a newSpace
-//        save space with space service
+        spaceService.saveSpace(unassigned, user.getId());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
