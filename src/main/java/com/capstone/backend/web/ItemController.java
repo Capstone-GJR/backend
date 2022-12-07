@@ -31,7 +31,7 @@ public class ItemController {
     }
 
     @GetMapping("/all/tote/{tote_id}")
-    public ResponseEntity<List<Item>> getAllBytoteId (@PathVariable Long tote_id) {
+    public ResponseEntity<List<Item>> getAllByToteId (@PathVariable Long tote_id) {
         List<Item> allItemsInTote = itemService.getAllItemsByTote(tote_id);
         return new ResponseEntity<>(allItemsInTote, HttpStatus.OK);
     }
@@ -39,7 +39,7 @@ public class ItemController {
 // FIXME : returning an empty array
     @GetMapping("/all/space/{space_id}")
     public ResponseEntity<List<Item>> getAllBySpaceId (@PathVariable Long space_id) {
-        List<Item> allItemsInSpace = itemService.getAllItemsByTote(space_id);
+        List<Item> allItemsInSpace = itemService.getAllItemsBySpace(space_id);
         return new ResponseEntity<>(allItemsInSpace, HttpStatus.OK);
     }
 
