@@ -42,9 +42,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.TESTING_TOKEN_EXPIRATION))
                 .sign(Algorithm.HMAC512(SecurityConstants.SECRET_KEY));
         response.addHeader(SecurityConstants.AUTHORIZATION, SecurityConstants.BEARER + token);
-
-        //        response.addHeader("User", String.valueOf(authResult));
-//        System.out.println(authResult.getCredentials());
     }
 
     @Override
