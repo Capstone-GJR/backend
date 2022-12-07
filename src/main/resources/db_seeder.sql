@@ -1,5 +1,3 @@
-DROP DATABASE traqura_db;
-
 USE traqura_db;
 
 
