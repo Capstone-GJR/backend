@@ -33,9 +33,8 @@ public class Space {
     private String fileStackUrl;
 
 //ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value? Change default value to a hex-code? get with guys on this.
-    @NonNull
-    @Column(nullable = false, columnDefinition = "varchar(255) default 'space'")
-    private String color;
+    @Column
+    private String color ="space";
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
