@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @AllArgsConstructor
 @RestController
@@ -22,11 +23,11 @@ public class UserController {
     ModelMapper modelMapper;
     UserService userService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
-        User profile = userService.getUser(id);
-        UserDTO userProfileDTO = modelMapper.map(profile, UserDTO.class);
-        return new ResponseEntity<>(userProfileDTO, HttpStatus.OK);
+//Grabs the user information based on the authenticated user so no need to use the id in the path to get user profile
+    @GetMapping("/")
+    public UserDTO user(Principal user) {
+        User fullUser = userService.getUser(user.getName());
+        return modelMapper.map(fullUser, UserDTO.class);
     }
 
     @PostMapping("/register")
