@@ -32,7 +32,7 @@ public class ItemServiceImp implements ItemService{
 
     @Override
     public List<Item> getAllItemsByTote(Long tote_id) {
-        return itemRepository.findBytoteId(tote_id);
+        return itemRepository.findByToteId(tote_id);
     }
 
     @Override
