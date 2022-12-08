@@ -45,4 +45,17 @@ public class Tote {
     @Column(nullable = false)
     private long parent_id;
 
+    @Override
+    public String toString() {
+        return "Tote{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", keywords='" + keywords + '\'' +
+                ", color='" + color + '\'' +
+                ", fileStackUrl='" + fileStackUrl + '\'' +
+                ", checkedOut=" + checkedOut +
+                ", space=" + space +
+                ", parent_id=" + parent_id +
+                '}';
+    }
 }

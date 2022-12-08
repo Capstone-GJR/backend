@@ -41,5 +41,15 @@ public class Space {
     @JsonIgnoreProperties("password")
     private User user;
 
-
+    @Override
+    public String toString() {
+        return "Space{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", keywords='" + keywords + '\'' +
+                ", fileStackUrl='" + fileStackUrl + '\'' +
+                ", color='" + color + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }

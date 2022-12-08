@@ -13,15 +13,15 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/{space_id}/tote")
+@RequestMapping("/tote")
 public class ToteController {
     ToteService toteService;
 
     @PostMapping("/add")
-    public ResponseEntity<Tote> createTote(@Valid @RequestBody Tote tote, @PathVariable Long space_id) {
-        return new ResponseEntity<>((toteService.saveTote(tote, space_id)), HttpStatus.CREATED);
+    public ResponseEntity<Tote> createTote(@Valid @RequestBody Tote tote) {
+        System.out.println(tote);
+        return new ResponseEntity<>((toteService.saveTote(tote)), HttpStatus.CREATED);
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<Tote> getById(@PathVariable Long id) {
@@ -29,19 +29,19 @@ public class ToteController {
         return new ResponseEntity<>(tote, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/all/{space_id}")
     public ResponseEntity<List<Tote>> getAllBySpaceID (@PathVariable Long space_id) {
         List<Tote> allTotes = toteService.getAllTotes(space_id);
         return new ResponseEntity<>(allTotes, HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("{id}/delete")
     public ResponseEntity<Tote> deleteTote (@PathVariable Long space_id, @PathVariable Long id) {
         toteService.deleteTote(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     //TODO: Request body must include all fields except id and user? - Look into Dynamic Update for passing in only updated values.
-    @PutMapping("/edit/{id}")
+    @PutMapping("{id}/edit/")
     public ResponseEntity<Tote> editTote (@PathVariable(name = "space_id") Long space_id, @PathVariable(name = "id") Long id, @RequestBody Tote tote) {
         Tote editedTote = toteService.editTote(space_id, id, tote);
         return new ResponseEntity<>(editedTote, HttpStatus.OK);
