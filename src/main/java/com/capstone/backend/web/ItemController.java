@@ -2,12 +2,14 @@ package com.capstone.backend.web;
 
 import com.capstone.backend.entity.Item;
 import com.capstone.backend.services.ItemService;
+import com.capstone.backend.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -17,6 +19,7 @@ import java.util.List;
 public class ItemController {
 
     ItemService itemService;
+    UserService userService;
 
 //Cannot read values of spaceID and toteID when passed in Request body
     @PostMapping("/add/space{space_id}")
@@ -30,13 +33,18 @@ public class ItemController {
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
+    @GetMapping("all/user")
+    public ResponseEntity<List<Item>> getAllByUserId (Principal user) {
+        Long user_id = userService.getUser(user.getName()).getId();
+        return new ResponseEntity<>(itemService.getAllItemsByUser(user_id), HttpStatus.OK);
+    }
+
     @GetMapping("/all/tote/{tote_id}")
     public ResponseEntity<List<Item>> getAllByToteId (@PathVariable Long tote_id) {
         List<Item> allItemsInTote = itemService.getAllItemsByTote(tote_id);
         return new ResponseEntity<>(allItemsInTote, HttpStatus.OK);
     }
 
-// FIXME : returning an empty array
     @GetMapping("/all/space/{space_id}")
     public ResponseEntity<List<Item>> getAllBySpaceId (@PathVariable Long space_id) {
         List<Item> allItemsInSpace = itemService.getAllItemsBySpace(space_id);

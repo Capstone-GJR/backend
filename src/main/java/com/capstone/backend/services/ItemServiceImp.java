@@ -31,6 +31,11 @@ public class ItemServiceImp implements ItemService{
     }
 
     @Override
+    public List<Item> getAllItemsByUser(Long user_id) {
+        return itemRepository.findBySpaceIdWhereUserId(user_id);
+    }
+
+    @Override
     public List<Item> getAllItemsByTote(Long tote_id) {
         return itemRepository.findByToteId(tote_id);
     }
