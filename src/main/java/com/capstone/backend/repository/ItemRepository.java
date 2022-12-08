@@ -23,8 +23,3 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
 
 
 }
-//SELECT DISTINCT items.* FROM items
-//            JOIN spaces on space_id
-//            JOIN users u
-//            on u.id = spaces.user_id
-//            WHERE user_id = ?", nativeQuery = true)
