@@ -13,7 +13,7 @@ public interface ItemService {
 
     List<Item> getAllItemsBySpace(Long space_id);
 
-//    List<Item> getAllItemsByUser(Long user_id);
+    List<Item> getAllItemsByUser(Long user_id);
 
     Item editItem(Long id, Item item);
 

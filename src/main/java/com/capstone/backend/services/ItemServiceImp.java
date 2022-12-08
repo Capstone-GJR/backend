@@ -30,10 +30,10 @@ public class ItemServiceImp implements ItemService{
         return itemRepository.save(item);
     }
 
-//    @Override
-//    public List<Item> getAllItemsByUser(Long user_id) {
-//        return itemRepository.findBySpaceIdWhereUserId(user_id);
-//    }
+    @Override
+    public List<Item> getAllItemsByUser(Long user_id) {
+        return itemRepository.findAllByUserId(user_id);
+    }
 
     @Override
     public List<Item> getAllItemsByTote(Long tote_id) {
