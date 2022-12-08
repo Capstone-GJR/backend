@@ -13,6 +13,6 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     List<Item> findBySpaceId(Long space_id);
     List<Item> findByToteId(Long tote_id);
     void deleteById(Long id);
-    List<Item> findAllBySpaceIdJoin(Long user_id);
+//    List<Item> findAllBySpaceIdJoin(Long user_id);
 
 }

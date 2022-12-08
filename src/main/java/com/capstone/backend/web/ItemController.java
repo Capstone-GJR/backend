@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -33,11 +32,11 @@ public class ItemController {
         return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
-    @GetMapping("all/user")
-    public ResponseEntity<List<Item>> getAllByUserId (Principal user) {
-        Long user_id = userService.getUser(user.getName()).getId();
-        return new ResponseEntity<>(itemService.getAllItemsByUser(user_id), HttpStatus.OK);
-    }
+//    @GetMapping("all/user")
+//    public ResponseEntity<List<Item>> getAllByUserId (Principal user) {
+//        Long user_id = userService.getUser(user.getName()).getId();
+//        return new ResponseEntity<>(itemService.getAllItemsByUser(user_id), HttpStatus.OK);
+//    }
 
     @GetMapping("/all/tote/{tote_id}")
     public ResponseEntity<List<Item>> getAllByToteId (@PathVariable Long tote_id) {
