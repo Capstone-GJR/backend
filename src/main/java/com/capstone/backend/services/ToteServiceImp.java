@@ -5,6 +5,7 @@ import com.capstone.backend.exception.EntityNotFoundException;
 import com.capstone.backend.repository.ToteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +14,15 @@ import java.util.Optional;
 public class ToteServiceImp implements ToteService {
     SpaceService spaceService;
     ToteRepository toteRepository;
+    //    public Tote saveTote(Tote tote, Long space_id) {
+    //        tote.setSpace(spaceService.getSpace(space_id));
+    //        return toteRepository.save(tote);
+    //    }
+
     @Override
-    public Tote saveTote(Tote tote, Long space_id) {
-        tote.setSpace(spaceService.getSpace(space_id));
+    public Tote saveTote(Tote tote) {
+        tote.setSpace(spaceService.getSpace(tote.getSpace().getId()));
+        System.out.println(tote);
         return toteRepository.save(tote);
     }
 
@@ -34,9 +41,9 @@ public class ToteServiceImp implements ToteService {
     public void deleteTote(Long id) {
         toteRepository.deleteById(id);
     }
-
+//Double check this for accuracy after adjustments to the save tote method
     @Override
-    public Tote editTote(Long space_id, Long id, Tote tote){
+    public Tote editTote(Long space_id, Long id, Tote tote) {
         Tote dbTote = getTote(id);
         dbTote.setSpace(tote.getSpace()); // move to new space
         dbTote.setName(tote.getName());
@@ -46,7 +53,7 @@ public class ToteServiceImp implements ToteService {
         dbTote.setParent_id(tote.getParent_id());
         dbTote.setCheckedOut(tote.isCheckedOut());
         dbTote.setSpace(spaceService.getSpace(space_id));
-       return saveTote(dbTote, space_id);
+        return saveTote(dbTote);
     }
 
     static Tote unwrapTote(Optional<Tote> entity, Long id) {
