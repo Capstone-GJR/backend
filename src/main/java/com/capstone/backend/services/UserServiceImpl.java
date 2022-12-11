@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
         unwrappedUser.setFirstName(userProfile.getFirstName());
         unwrappedUser.setLastName(userProfile.getLastName());
         unwrappedUser.setEmail(userProfile.getEmail());
+        userRepository.save(unwrappedUser);
         return unwrappedUser;
     }
 
