@@ -36,11 +36,7 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    public void updatePassword(Principal user, String newPassword) {
-        User dbUser = getUser(user.getName());
-        dbUser.setPassword(newPassword);
-       saveUser(dbUser);
-    }
+
 
     @Override
     public User getUser(Long id) {
@@ -65,7 +61,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(unwrappedUser);
         return unwrappedUser;
     }
-
+    public void updatePassword(Principal user, String newPassword) {
+        User dbUser = getUser(user.getName());
+        dbUser.setPassword(newPassword);
+        saveUser(dbUser);
+    }
 
     static User unwrapUser(Optional<User> entity, Long id) {
         if (entity.isPresent()) return entity.get();
