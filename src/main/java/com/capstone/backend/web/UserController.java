@@ -56,9 +56,10 @@ public class UserController {
     }
 
     @PutMapping("/editPW")
-    public ResponseEntity<User> updatePassword(@RequestBody User userNewPass) {
-        userService.updatePassword(userNewPass);
+    public ResponseEntity<User> updatePassword(@RequestBody User userNewPass, Principal user) {
+        User NewUserPass = userService.getUser(user.getName());
+        NewUserPass.setPassword(userNewPass.getPassword());
+        userService.updatePassword(NewUserPass);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
