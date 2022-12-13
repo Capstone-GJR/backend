@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Service
@@ -35,10 +36,9 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    public void updatePassword(User userNewPass) {
-        Long id = userNewPass.getId();
-        User dbUser = getUser(id);
-        dbUser.setPassword(userNewPass.getPassword());
+    public void updatePassword(Principal user, String newPassword) {
+        User dbUser = getUser(user.getName());
+        dbUser.setPassword(newPassword);
        saveUser(dbUser);
     }
 
