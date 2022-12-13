@@ -49,8 +49,9 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<UserDTO> updateUser(@RequestBody User user, @PathVariable Long id) {
+    @PutMapping("/edit/")
+    public ResponseEntity<UserDTO> updateUser(@RequestBody User user, Principal userID) {
+        Long id = userService.getUser(userID.getName()).getId();
         UserDTO updatedProfile = modelMapper.map((userService.updateUserProfile(id,user)), UserDTO.class);
         return new ResponseEntity<>(updatedProfile, HttpStatus.OK);
     }
