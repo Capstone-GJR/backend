@@ -32,6 +32,10 @@ public class UserController {
         User fullUser = userService.getUser(user.getName());
         return modelMapper.map(fullUser, UserDTO.class);
     }
+    @GetMapping("/test")
+    public User userTest() {
+        return userService.getUser(1L);
+    }
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
