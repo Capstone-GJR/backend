@@ -1,5 +1,6 @@
 package com.capstone.backend.services;
 
+import com.capstone.backend.entity.Space;
 import com.capstone.backend.entity.Tote;
 import com.capstone.backend.exception.EntityNotFoundException;
 import com.capstone.backend.repository.ToteRepository;
@@ -21,7 +22,8 @@ public class ToteServiceImp implements ToteService {
 
     @Override
     public Tote saveTote(Tote tote, Long space_id) {
-        tote.setSpace(spaceService.getSpace(space_id));
+        Space space = spaceService.getSpace(space_id);
+        tote.setSpace(space);
         return toteRepository.save(tote);
     }
 

@@ -29,13 +29,13 @@ public class Tote {
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-    @Column(nullable = false)
+    @Column
     private String color;
 
-    @Column(nullable = false)
+    @Column
     private String fileStackUrl;
 
-    @Column(nullable = false)
+    @Column
     boolean checkedOut;
 
     @ManyToOne(optional = false)
