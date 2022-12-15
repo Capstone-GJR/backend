@@ -47,9 +47,9 @@ public class Tote {
     private List<Item> items;
 
 //    Parent id = 0 if tote is directly inside a space, Parent id = tote_id, when the tote is inside another tote.
-    @NonNull
-    @Column(nullable = false)
-    private long parent_id;
+//    @NonNull
+//    @Column(nullable = false)
+//    private long parent_id;
 
     @Override
     public String toString() {
@@ -61,7 +61,6 @@ public class Tote {
                 ", fileStackUrl='" + fileStackUrl + '\'' +
                 ", checkedOut=" + checkedOut +
                 ", space=" + space +
-                ", parent_id=" + parent_id +
                 '}';
     }
 }

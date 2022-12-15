@@ -50,7 +50,7 @@ public class ToteServiceImp implements ToteService {
         dbTote.setKeywords(tote.getKeywords());
         dbTote.setColor(tote.getColor());
         dbTote.setFileStackUrl(tote.getFileStackUrl());
-        dbTote.setParent_id(tote.getParent_id());
+//        dbTote.setParent_id(tote.getParent_id());
         dbTote.setCheckedOut(tote.isCheckedOut());
         dbTote.setSpace(spaceService.getSpace(space_id));
         return saveTote(dbTote);
