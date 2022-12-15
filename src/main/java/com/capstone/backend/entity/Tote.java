@@ -1,9 +1,11 @@
 package com.capstone.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "totes")
@@ -39,6 +41,10 @@ public class Tote {
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space space;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "tote", cascade = CascadeType.ALL)
+    private List<Item> items;
 
 //    Parent id = 0 if tote is directly inside a space, Parent id = tote_id, when the tote is inside another tote.
     @NonNull
