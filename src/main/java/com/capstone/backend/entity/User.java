@@ -41,6 +41,8 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
+    private UserRole role;
+
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Space> spaces;

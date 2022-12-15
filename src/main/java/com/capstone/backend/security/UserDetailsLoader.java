@@ -1,8 +1,8 @@
 package com.capstone.backend.security;
 
-import com.capstone.lockerapi.models.User;
-import com.capstone.lockerapi.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.capstone.backend.entity.User;
+import com.capstone.backend.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,26 +12,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service("UserDetailsLoader")
 public class UserDetailsLoader implements UserDetailsService {
 
-    @Autowired
-    private final UserRepository userRepository;
-
-
-    public UserDetailsLoader(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
+//    private final UserService userService;
+private final UserRepository userRepository;
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email);
         if (user == null) {
             throw new UsernameNotFoundException("ERROR: No user found.");
         }
         GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
+                user.getEmail(),
                 user.getPassword(),
                 List.of(authority)
         );

@@ -10,8 +10,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.security.Principal;
 
 @AllArgsConstructor
@@ -39,6 +41,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/register").toUriString());
         Space unassigned = new Space();
         unassigned.setName("unassigned");
         unassigned.setKeywords("unassigned");

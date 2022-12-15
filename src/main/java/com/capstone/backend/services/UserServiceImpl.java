@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
 //STRING GET USER IS NEEDED FOR AUTH PURPOSED
     @Override
     public User getUser(String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        return unwrapUser(user, email);
+        return userRepository.findByEmail(email);
+//        return unwrapUser(user, email);
     }
 
 // Make sure this is working

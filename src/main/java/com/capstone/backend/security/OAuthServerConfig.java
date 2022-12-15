@@ -33,7 +33,7 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     private final UserDetailsLoader userDetailsLoader;
 
     // Assigning default values to class fields.
-    @Value("${jwt.clientId:sports-app-client}")
+    @Value("${jwt.clientId:traqura-app-client}")
     private String clientId;
 
     @Value("${jwt.client-secret:secret}")
@@ -78,6 +78,7 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
         CorsConfiguration config = new CorsConfiguration();
         config.applyPermitDefaultValues();
         config.addAllowedHeader("access-control-allow-origin");
+//        LOGIN/AuthC path
         source.registerCorsConfiguration("/oauth/token", config);
 
         CorsFilter filter = new CorsFilter(source);
