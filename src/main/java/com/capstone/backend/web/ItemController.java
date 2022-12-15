@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000, https://traqura.xyz")
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000, https://traqura.xyz")
 @RequestMapping("/item")
 public class ItemController {
 
