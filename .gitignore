@@ -34,3 +34,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/com/capstone/backend/security/OldSecurityConstants.java
