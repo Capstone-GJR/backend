@@ -20,9 +20,8 @@ public class ToteServiceImp implements ToteService {
     //    }
 
     @Override
-    public Tote saveTote(Tote tote) {
-        tote.setSpace(spaceService.getSpace(tote.getSpace().getId()));
-        System.out.println(tote);
+    public Tote saveTote(Tote tote, Long space_id) {
+        tote.setSpace(spaceService.getSpace(space_id));
         return toteRepository.save(tote);
     }
 
@@ -53,7 +52,7 @@ public class ToteServiceImp implements ToteService {
 //        dbTote.setParent_id(tote.getParent_id());
         dbTote.setCheckedOut(tote.isCheckedOut());
         dbTote.setSpace(spaceService.getSpace(space_id));
-        return saveTote(dbTote);
+        return saveTote(dbTote, space_id);
     }
 
     static Tote unwrapTote(Optional<Tote> entity, Long id) {

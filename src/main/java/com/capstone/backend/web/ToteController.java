@@ -16,9 +16,9 @@ import java.util.List;
 public class ToteController {
     ToteService toteService;
 
-    @PostMapping("/add")
-    public ResponseEntity<Tote> createTote(@RequestBody Tote tote) {
-        return new ResponseEntity<>((toteService.saveTote(tote)), HttpStatus.CREATED);
+    @PostMapping("/add/{space_id}")
+    public ResponseEntity<Tote> createTote(@RequestBody Tote tote, @PathVariable Long space_id) {
+        return new ResponseEntity<>((toteService.saveTote(tote, space_id)), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
