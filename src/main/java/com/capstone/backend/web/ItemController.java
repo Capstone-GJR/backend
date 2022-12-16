@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -22,9 +21,9 @@ public class ItemController {
     UserService userService;
 
 //Cannot read values of spaceID and toteID when passed in Request body
-    @PostMapping("/add/space{space_id}")
-    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item, @PathVariable Long space_id) {
-        return new ResponseEntity<>((itemService.saveItem(item, space_id)), HttpStatus.CREATED);
+    @PostMapping("/add/{tote_id}")
+    public ResponseEntity<Item> createItem(@RequestBody Item item, @PathVariable Long tote_id) {
+        return new ResponseEntity<>((itemService.saveItem(item, tote_id)), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -45,15 +44,16 @@ public class ItemController {
         return new ResponseEntity<>(allItemsInTote, HttpStatus.OK);
     }
 
-    @GetMapping("/all/space/{space_id}")
-    public ResponseEntity<List<Item>> getAllBySpaceId (@PathVariable Long space_id) {
-        List<Item> allItemsInSpace = itemService.getAllItemsBySpace(space_id);
-        return new ResponseEntity<>(allItemsInSpace, HttpStatus.OK);
-    }
+//    Removed Tote field so do not currently need this method
+//    @GetMapping("/all/space/{space_id}")
+//    public ResponseEntity<List<Item>> getAllBySpaceId (@PathVariable Long space_id) {
+//        List<Item> allItemsInSpace = itemService.getAllItemsBySpace(space_id);
+//        return new ResponseEntity<>(allItemsInSpace, HttpStatus.OK);
+//    }
 
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<Item> editItem (@PathVariable(name = "id") Long id, @RequestBody Item item) {
-        Item editedItem = itemService.editItem(id, item);
+    @PutMapping("/edit/{id}/{tote_id}")
+    public ResponseEntity<Item> editItem (@PathVariable Long tote_id, @PathVariable(name = "id") Long id, @RequestBody Item item) {
+        Item editedItem = itemService.editItem(id, tote_id, item);
         return new ResponseEntity<>(editedItem, HttpStatus.OK);
     }
 

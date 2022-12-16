@@ -52,7 +52,7 @@ VALUES ('tote1', 'bathroom supplies', 'purple', 'no image', 0, 1),
        ('tote6', 'kitchen supplies', 'blue', 'fakeurl', 0, 4);
 
 
-INSERT INTO items (name, keywords, value, color, file_stack_url, checked_out, space_id)
+INSERT INTO items (name, keywords, value, color, file_stack_url, checked_out, tote_id)
 VALUES ('sofa', 'red sofa sectional', 1000, 'red', 'wwww.fakeurl.com', 0, 1),
        ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 3, 'purple', 'no image', 0, 1),
        ('monitor', 'computer, electronics, office', 150, 'purple', 'no image', 0, 1),

@@ -45,15 +45,11 @@ public class ToteServiceImp implements ToteService {
 //Double check this for accuracy after adjustments to the save tote method
     @Override
     public Tote editTote(Long space_id, Long id, Tote tote) {
-        Tote dbTote = getTote(id);
-        dbTote.setSpace(tote.getSpace()); // move to new space
+        Tote dbTote = getTote(id); // find original database version of tote
         dbTote.setName(tote.getName());
         dbTote.setKeywords(tote.getKeywords());
         dbTote.setColor(tote.getColor());
         dbTote.setFileStackUrl(tote.getFileStackUrl());
-//        dbTote.setParent_id(tote.getParent_id());
-        dbTote.setCheckedOut(tote.isCheckedOut());
-        dbTote.setSpace(spaceService.getSpace(space_id));
         return saveTote(dbTote, space_id);
     }
 

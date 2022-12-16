@@ -33,14 +33,14 @@ public class ToteController {
         return new ResponseEntity<>(allTotes, HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Tote> deleteTote (@PathVariable Long id) {
         toteService.deleteTote(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 //TODO: Request body must include all fields except id and user? - Look into Dynamic Update for passing in only updated values.
-    @PutMapping("{id}/edit/")
-    public ResponseEntity<Tote> editTote (@PathVariable(name = "space_id") Long space_id, @PathVariable(name = "id") Long id, @RequestBody Tote tote) {
+    @PutMapping("/edit/{id}/{space_id}")
+    public ResponseEntity<Tote> editTote (@PathVariable Long space_id, @PathVariable(name = "id") Long id, @RequestBody Tote tote) {;
         Tote editedTote = toteService.editTote(space_id, id, tote);
         return new ResponseEntity<>(editedTote, HttpStatus.OK);
     }
