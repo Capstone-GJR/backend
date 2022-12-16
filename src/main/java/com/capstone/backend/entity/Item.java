@@ -1,8 +1,10 @@
 package com.capstone.backend.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+
 //TODO: default values for fields.
 @Entity
 @Table(name = "items")
@@ -18,7 +20,7 @@ public class Item {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column
     private long value;
 
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
@@ -26,22 +28,18 @@ public class Item {
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-    @Column(nullable = false)
+    @Column
     private String fileStackUrl;
 
-    @Column(nullable = false)
+    @Column
     private String color;
 
-    @Column(nullable = false)
+    @Column
     boolean checkedOut;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "space_id", referencedColumnName = "id")
-    private Space space;
 
 //    TODO: Is there a way to make this field optional instead of assigning it 0 if inside a space directly.
 // Enter tote id of 0 if this item is inside a space directly.
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "tote_id", referencedColumnName = "id")
     private Tote tote;
 

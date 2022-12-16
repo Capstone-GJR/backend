@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,10 +16,9 @@ import java.util.List;
 public class ToteController {
     ToteService toteService;
 
-    @PostMapping("/add")
-    public ResponseEntity<Tote> createTote(@Valid @RequestBody Tote tote) {
-        System.out.println(tote);
-        return new ResponseEntity<>((toteService.saveTote(tote)), HttpStatus.CREATED);
+    @PostMapping("/add/{space_id}")
+    public ResponseEntity<Tote> createTote(@RequestBody Tote tote, @PathVariable Long space_id) {
+        return new ResponseEntity<>((toteService.saveTote(tote, space_id)), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -35,14 +33,14 @@ public class ToteController {
         return new ResponseEntity<>(allTotes, HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Tote> deleteTote (@PathVariable Long id) {
         toteService.deleteTote(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 //TODO: Request body must include all fields except id and user? - Look into Dynamic Update for passing in only updated values.
-    @PutMapping("{id}/edit/")
-    public ResponseEntity<Tote> editTote (@PathVariable(name = "space_id") Long space_id, @PathVariable(name = "id") Long id, @RequestBody Tote tote) {
+    @PutMapping("/edit/{id}/{space_id}")
+    public ResponseEntity<Tote> editTote (@PathVariable Long space_id, @PathVariable(name = "id") Long id, @RequestBody Tote tote) {;
         Tote editedTote = toteService.editTote(space_id, id, tote);
         return new ResponseEntity<>(editedTote, HttpStatus.OK);
     }

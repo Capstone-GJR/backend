@@ -40,6 +40,7 @@ public class SecurityConfig {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
+                .cors().and()
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                 .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()

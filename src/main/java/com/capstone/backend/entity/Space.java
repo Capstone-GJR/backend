@@ -1,10 +1,12 @@
 package com.capstone.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "spaces")
@@ -40,6 +42,10 @@ public class Space {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonIgnoreProperties("password")
     private User user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "space", cascade = CascadeType.ALL)
+    private List<Tote> totes;
 
     @Override
     public String toString() {

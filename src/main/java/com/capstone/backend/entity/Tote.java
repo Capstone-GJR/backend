@@ -1,9 +1,11 @@
 package com.capstone.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "totes")
@@ -27,23 +29,27 @@ public class Tote {
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-    @Column(nullable = false)
+    @Column
     private String color;
 
-    @Column(nullable = false)
+    @Column
     private String fileStackUrl;
 
-    @Column(nullable = false)
+    @Column
     boolean checkedOut;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space space;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "tote", cascade = CascadeType.ALL)
+    private List<Item> items;
+
 //    Parent id = 0 if tote is directly inside a space, Parent id = tote_id, when the tote is inside another tote.
-    @NonNull
-    @Column(nullable = false)
-    private long parent_id;
+//    @NonNull
+//    @Column(nullable = false)
+//    private long parent_id;
 
     @Override
     public String toString() {
@@ -55,7 +61,6 @@ public class Tote {
                 ", fileStackUrl='" + fileStackUrl + '\'' +
                 ", checkedOut=" + checkedOut +
                 ", space=" + space +
-                ", parent_id=" + parent_id +
                 '}';
     }
 }

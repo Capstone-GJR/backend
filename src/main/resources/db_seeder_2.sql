@@ -7,4 +7,8 @@ VALUES ('TaraDactyl@dino.com', 'Tara', 'Dactyl', '$2a$10$wEc65/etNcCBKYLzlHTvvOI
        ('v-raptor@dino.com', 'Vicente', 'Raptor', '$2a$10$U5H/HJjxrRheOH784Qw1au6Cn0ZJtuDgfyrXh27DszVsTzG1bcIfC');
 
 INSERT INTO spaces (name, keywords, file_stack_url, color, user_id)
-VALUES ('living room', 'living room family room', 'no image', 'pink', 4);
+VALUES ('living room', 'living room sofa family', 'https://cdn.filestackcontent.com/P21lCTrPQmK8sLbcIRmL', 'pink', 1),
+        ('Kitchen', 'kitchen', 'https://cdn.filestackcontent.com/gJPmLlkRRTRI4LF5lDSw', 'green', 1),
+        ('Garage', 'garage christmas tools pool', '"https://cdn.filestackcontent.com/Y1CH6J8vRnqYsKw0fAng"', 'blue', 1),
+        ('Office', '', 'https://cdn.filestackcontent.com/lInb1BjLTe2uGgSsMtUZ', '', 1),
+        ('', '', '', '', 1);

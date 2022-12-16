@@ -16,7 +16,7 @@ public class ItemServiceImp implements ItemService{
 
     ItemRepository itemRepository;
     ToteService toteService;
-    SpaceService spaceService;
+
 
     @Override
     public Item getItem(Long id) {
@@ -25,8 +25,8 @@ public class ItemServiceImp implements ItemService{
     }
 
     @Override
-    public Item saveItem(Item item, Long space_id) {
-        item.setSpace(spaceService.getSpace(space_id));
+    public Item saveItem(Item item, Long tote_id) {
+        item.setTote(toteService.getTote(tote_id));
         return itemRepository.save(item);
     }
 
@@ -40,22 +40,21 @@ public class ItemServiceImp implements ItemService{
         return itemRepository.findByToteId(tote_id);
     }
 
-    @Override
-    public List<Item> getAllItemsBySpace(Long space_id) {
-        return itemRepository.findBySpaceId(space_id);
-    }
+//    @Override
+//    public List<Item> getAllItemsBySpace(Long space_id) {
+//        return itemRepository.findBySpaceId(space_id);
+//    }
 
     @Override
-    public Item editItem(Long id, Item item) {
+    public Item editItem(Long id, Long tote_id, Item item) {
         Item dbItem = getItem(id);
         dbItem.setName(item.getName());
         dbItem.setKeywords(item.getKeywords());
         dbItem.setColor(item.getColor());
         dbItem.setFileStackUrl(item.getFileStackUrl());
-        dbItem.setCheckedOut(item.isCheckedOut());
-        dbItem.setTote(item.getTote());
+//        dbItem.setCheckedOut(item.isCheckedOut());
         dbItem.setValue(item.getValue());
-        return saveItem(dbItem, dbItem.getSpace().getId());
+        return saveItem(dbItem, tote_id);
     }
 
     @Override
