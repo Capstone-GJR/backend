@@ -40,6 +40,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                 .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
                 .antMatchers(HttpMethod.GET, SecurityConstants.TEST_PATH).permitAll()
+                        .antMatchers().permitAll()
                         // Allows anyone to make post request on the path sign-up/register
                 .anyRequest().authenticated() )// requires that all requests (other than antMatcher specified requests) be authenticated
                 .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
