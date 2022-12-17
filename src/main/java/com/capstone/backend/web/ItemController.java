@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000, https://traqura.xyz")
 @RequestMapping("/item")
 public class ItemController {
 

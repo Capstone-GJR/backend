@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000, https://traqura.xyz")
 @RequestMapping("/space")
 public class SpaceController {
     //TODO: Find by keyword/search
