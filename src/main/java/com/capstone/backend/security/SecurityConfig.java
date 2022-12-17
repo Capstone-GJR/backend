@@ -45,7 +45,7 @@ public class SecurityConfig {
                 .addFilter(authenticationFilter)
                 .addFilterAfter(new JWTAuthorizationFilter(), AuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.cors();
+//        http.cors();
         return http.build();
     }
 
