@@ -16,7 +16,7 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000, https://traqura.xyz")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 @RequestMapping("/user")
 public class UserController {
 
