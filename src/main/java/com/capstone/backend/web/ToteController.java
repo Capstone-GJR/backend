@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "/**")
 @RequestMapping("/tote")
 public class ToteController {
     ToteService toteService;
