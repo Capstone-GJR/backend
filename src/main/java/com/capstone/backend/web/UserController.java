@@ -16,7 +16,7 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "/**")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/user")
 public class UserController {
 
@@ -32,6 +32,7 @@ public class UserController {
         User fullUser = userService.getUser(user.getName());
         return modelMapper.map(fullUser, UserDTO.class);
     }
+
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
