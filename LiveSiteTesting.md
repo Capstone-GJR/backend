@@ -6,6 +6,9 @@
   - ![](../../../../../var/folders/fk/8ht2dcm12ygchg11r8mmfs2h0000gn/T/TemporaryItems/NSIRD_screencaptureui_7L656w/Screenshot 2022-12-19 at 11.38.58 AM.png)
   - BUT not register path is blocked by cors!!!! 
 
+With no cors on filter and no cors config... 
+- login(authenticate) is the only path blocked by cors. 
+
 ### User 
 - Register new user 
   - /success
