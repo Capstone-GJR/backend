@@ -9,6 +9,9 @@
 With no cors on filter and no cors config... 
 - login(authenticate) is the only path blocked by cors. 
 
+Add Cors bean to auth filter 
+- still get error on auth path but no CORS error on the register path 
+
 ### User 
 - Register new user 
   - /success
