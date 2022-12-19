@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
@@ -42,6 +43,7 @@ public class SecurityConfig {
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http.cors();
         http
+                .cors(AbstractHttpConfigurer::disable)
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                 .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
