@@ -1,15 +1,15 @@
 package com.capstone.backend.repository;
 
 import com.capstone.backend.entity.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ItemRepository extends CrudRepository<Item, Long> {
+public interface ItemRepository extends JpaRepository<Item, Long> {
     Optional<Item> findById(Long id);
 
 //    List<Item> findBySpaceId(Long space_id);
@@ -20,6 +20,7 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
 
     @Query(value = "SELECT DISTINCT items.* FROM items JOIN totes t on items.tote_id = t.id JOIN spaces on space_id JOIN users u on u.id = spaces.user_id WHERE user_id =?1", nativeQuery = true)
     List<Item> findAllByUserId (Long user_id);
+
 
 
 }
