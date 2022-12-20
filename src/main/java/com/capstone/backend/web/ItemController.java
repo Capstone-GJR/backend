@@ -63,9 +63,9 @@ public class ItemController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("search/")
-    public ResponseEntity<List<Item>> findItemsByKeyword(String keyword){
-        List<Item> searchResults =
-        return new ResponseEntity<>(searchResults, HttpStatus.OK);
-    }
+//    @PostMapping("search/")
+//    public ResponseEntity<List<Item>> findItemsByKeyword(String keyword){
+//        List<Item> searchResults =
+//        return new ResponseEntity<>(searchResults, HttpStatus.OK);
+//    }
 }
