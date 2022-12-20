@@ -1,5 +1,6 @@
 package com.capstone.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -41,7 +42,7 @@ public class Tote {
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space space;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "tote", cascade = CascadeType.ALL)
     private List<Item> items;
 
