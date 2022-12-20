@@ -1,6 +1,5 @@
 package com.capstone.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -43,7 +42,7 @@ public class Space {
     @JsonIgnoreProperties("password")
     private User user;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "space", cascade = CascadeType.ALL)
     private List<Tote> totes;
 
