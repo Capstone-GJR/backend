@@ -1,6 +1,4 @@
 package com.capstone.backend.security;
-
-
 import com.capstone.backend.security.filter.AuthenticationFilter;
 import com.capstone.backend.security.filter.ExceptionHandlerFilter;
 import com.capstone.backend.security.filter.JWTAuthorizationFilter;
