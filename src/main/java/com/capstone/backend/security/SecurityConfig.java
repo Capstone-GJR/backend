@@ -1,6 +1,5 @@
 package com.capstone.backend.security;
 
-
 import com.capstone.backend.security.filter.AuthenticationFilter;
 import com.capstone.backend.security.filter.ExceptionHandlerFilter;
 import com.capstone.backend.security.filter.JWTAuthorizationFilter;
@@ -9,7 +8,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,6 +23,10 @@ import java.util.Arrays;
 @AllArgsConstructor
 public class SecurityConfig {
     CustomAuthenticationManager customAuthenticationManager;
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/main
     /*
     @Bean
     CorsConfigurationSource corsConfigurationSource()
@@ -41,12 +43,20 @@ public class SecurityConfig {
     }
 */
     // .cors(Customizer.withDefaults())
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/main
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
+<<<<<<< HEAD
 		.cors().and()
+=======
+            .cors().and()
+>>>>>>> refs/remotes/origin/main
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
 		.antMatchers(HttpMethod.OPTIONS, "/authenticate").permitAll()
