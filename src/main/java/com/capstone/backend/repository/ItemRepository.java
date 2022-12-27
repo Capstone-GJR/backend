@@ -1,15 +1,15 @@
 package com.capstone.backend.repository;
 
 import com.capstone.backend.entity.Item;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item, Long> {
+public interface ItemRepository extends CrudRepository<Item, Long> {
     Optional<Item> findById(Long id);
 
 //    List<Item> findBySpaceId(Long space_id);
