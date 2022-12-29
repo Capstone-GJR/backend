@@ -15,10 +15,7 @@ import java.util.Optional;
 public class ToteServiceImp implements ToteService {
     SpaceService spaceService;
     ToteRepository toteRepository;
-    //    public Tote saveTote(Tote tote, Long space_id) {
-    //        tote.setSpace(spaceService.getSpace(space_id));
-    //        return toteRepository.save(tote);
-    //    }
+
 
     @Override
     public Tote saveTote(Tote tote, Long space_id) {

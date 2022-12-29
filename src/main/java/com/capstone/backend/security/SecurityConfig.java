@@ -13,16 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import java.util.Arrays;
-
 @EnableWebSecurity
 @Configuration
 @AllArgsConstructor
 public class SecurityConfig {
     CustomAuthenticationManager customAuthenticationManager;
+
+
+
+
     /*
     @Bean
     CorsConfigurationSource corsConfigurationSource()
@@ -39,11 +38,19 @@ public class SecurityConfig {
     }
 */
     // .cors(Customizer.withDefaults())
+
+
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
+
+
+
+
             .cors().and()
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
