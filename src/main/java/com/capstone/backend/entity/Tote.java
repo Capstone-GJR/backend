@@ -35,9 +35,6 @@ public class Tote {
     @Column
     private String fileStackUrl;
 
-    @Column
-    boolean checkedOut;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space space;
@@ -59,7 +56,6 @@ public class Tote {
                 ", keywords='" + keywords + '\'' +
                 ", color='" + color + '\'' +
                 ", fileStackUrl='" + fileStackUrl + '\'' +
-                ", checkedOut=" + checkedOut +
                 ", space=" + space +
                 '}';
     }

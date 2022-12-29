@@ -34,8 +34,6 @@ public class Item {
     @Column
     private String color;
 
-    @Column
-    boolean checkedOut;
 
 //    TODO: Is there a way to make this field optional instead of assigning it 0 if inside a space directly.
 // Enter tote id of 0 if this item is inside a space directly.
