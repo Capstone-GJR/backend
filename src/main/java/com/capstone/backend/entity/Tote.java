@@ -35,8 +35,6 @@ public class Tote {
     @Column
     private String fileStackUrl;
 
-    @Column
-    boolean checkedOut;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
@@ -46,10 +44,6 @@ public class Tote {
     @OneToMany(mappedBy = "tote", cascade = CascadeType.ALL)
     private List<Item> items;
 
-//    Parent id = 0 if tote is directly inside a space, Parent id = tote_id, when the tote is inside another tote.
-//    @NonNull
-//    @Column(nullable = false)
-//    private long parent_id;
 
     @Override
     public String toString() {
@@ -59,7 +53,6 @@ public class Tote {
                 ", keywords='" + keywords + '\'' +
                 ", color='" + color + '\'' +
                 ", fileStackUrl='" + fileStackUrl + '\'' +
-                ", checkedOut=" + checkedOut +
                 ", space=" + space +
                 '}';
     }

@@ -52,7 +52,6 @@ public class ItemServiceImp implements ItemService{
         dbItem.setKeywords(item.getKeywords());
         dbItem.setColor(item.getColor());
         dbItem.setFileStackUrl(item.getFileStackUrl());
-//        dbItem.setCheckedOut(item.isCheckedOut());
         dbItem.setValue(item.getValue());
         return saveItem(dbItem, tote_id);
     }
