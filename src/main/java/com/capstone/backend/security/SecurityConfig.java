@@ -23,10 +23,6 @@ import java.util.Arrays;
 @AllArgsConstructor
 public class SecurityConfig {
     CustomAuthenticationManager customAuthenticationManager;
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
     /*
     @Bean
     CorsConfigurationSource corsConfigurationSource()
@@ -43,20 +39,12 @@ public class SecurityConfig {
     }
 */
     // .cors(Customizer.withDefaults())
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
-<<<<<<< HEAD
-		.cors().and()
-=======
             .cors().and()
->>>>>>> refs/remotes/origin/main
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
 		.antMatchers(HttpMethod.OPTIONS, "/authenticate").permitAll()
