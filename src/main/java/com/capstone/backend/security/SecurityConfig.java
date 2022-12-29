@@ -19,6 +19,9 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     CustomAuthenticationManager customAuthenticationManager;
 
+
+
+
     /*
     @Bean
     CorsConfigurationSource corsConfigurationSource()
@@ -36,11 +39,17 @@ public class SecurityConfig {
 */
     // .cors(Customizer.withDefaults())
 
+
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
+
+
+
 
             .cors().and()
                 .csrf().disable()
