@@ -58,16 +58,16 @@ VALUES ('sofa', 'red sofa sectional', 1000, 'red', 'https://cdn.filestackcontent
        ('monitor', 'computer, electronics, office', 150, 'purple', 'https://cdn.filestackcontent.com/uVRSOH2uRQS9lb246Nve', 1),
        ('laptop', 'computer, electronics, office', 1700, 'purple', 'https://cdn.filestackcontent.com/uVRSOH2uRQS9lb246Nve',1),
        ('purse', 'clothes, pink', 700, 'purple', 'https://cdn.filestackcontent.com/uVRSOH2uRQS9lb246Nve', 1),
-       ('sofa', 'red sofa sectional', 2000, 'red', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 2),
-       ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 3, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB',  2),
-       ('monitor', 'computer, electronics, office', 250, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 2),
-       ('laptop', 'computer, electronics, office', 2700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 2),
-       ('purse', 'clothes, pink', 700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 2),
-       ('sofa', 'red sofa sectional', 3000, 'red', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB',  3),
-       ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 3, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 3),
-       ('monitor', 'computer, electronics, office', 350, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 3),
-       ('laptop', 'computer, electronics, office', 3700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 3),
-       ('purse', 'clothes, pink', 700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 3);
+       ('sofa', 'red sofa sectional', 2000, 'red', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 3, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB',  1),
+       ('monitor', 'computer, electronics, office', 250, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('laptop', 'computer, electronics, office', 2700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('purse', 'clothes, pink', 700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('sofa', 'red sofa sectional', 3000, 'red', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB',  1),
+       ('cody the duck', 'rubber, yellow, duck, bath toys, kids', 3, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('monitor', 'computer, electronics, office', 350, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('laptop', 'computer, electronics, office', 3700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1),
+       ('purse', 'clothes, pink', 700, 'purple', 'https://cdn.filestackcontent.com/zL4Rlp1uR5ONHSJXoNkB', 1);
 
 
 
