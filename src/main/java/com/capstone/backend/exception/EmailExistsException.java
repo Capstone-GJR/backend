@@ -5,6 +5,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 public class EmailExistsException extends SQLIntegrityConstraintViolationException {
 
     public EmailExistsException(String email) {
-        super("The email " + email + " is already in use");
+        super("The email is already in use");
     }
 }
