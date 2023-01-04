@@ -23,11 +23,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerUser(User user){
         user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
+        user.setEmail((user.getEmail().toLowerCase()));
         return userRepository.save(user);
     }
     @Override
     public User saveUser(User user) {
         user.setPassword((bCryptPasswordEncoder.encode(user.getPassword())));
+        user.setEmail((user.getEmail().toLowerCase()));
         return userRepository.save(user);
     }
 
