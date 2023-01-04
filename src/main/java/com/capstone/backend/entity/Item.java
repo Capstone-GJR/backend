@@ -28,7 +28,7 @@ public class Item {
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-    @Column
+    @Column(columnDefinition = "varchar(255) default 'https://cdn.filestackcontent.com/PkMi3vJURiPIflMIycjK'")
     private String fileStackUrl;
 
     @Column

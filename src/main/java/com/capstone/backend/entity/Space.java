@@ -25,18 +25,18 @@ public class Space {
     private String name;
 
 
-//ToDo: Make this a List<String> ... Which would be more easily searchable?
+    //ToDo: Make this a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
     private String keywords;
 
-// Nullable = optional field. if no image color with display instead.
-    @Column(name = "fileStackUrl", nullable = true)
+    // Nullable = optional field. if no image color with display instead.
+    @Column(columnDefinition = "varchar(255) default 'https://cdn.filestackcontent.com/PkMi3vJURiPIflMIycjK'")
     private String fileStackUrl;
 
-//ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value? Change default value to a hex-code? get with guys on this.
+    //ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value? Change default value to a hex-code? get with guys on this.
     @Column
-    private String color ="space";
+    private String color = "space";
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id")

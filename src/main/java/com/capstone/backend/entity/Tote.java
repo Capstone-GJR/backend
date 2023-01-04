@@ -32,7 +32,7 @@ public class Tote {
     @Column
     private String color;
 
-    @Column
+    @Column(columnDefinition = "varchar(255) default 'https://cdn.filestackcontent.com/PkMi3vJURiPIflMIycjK'")
     private String fileStackUrl;
 
     @ManyToOne(optional = false)
