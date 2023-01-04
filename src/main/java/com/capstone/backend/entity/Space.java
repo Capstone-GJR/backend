@@ -31,8 +31,8 @@ public class Space {
     private String keywords;
 
 // Nullable = optional field. if no image color with display instead.
-    @Column(name = "fileStackUrl", nullable = true)
-    private String fileStackUrl;
+@Column(columnDefinition = "varchar(255) default 'https://cdn.filestackcontent.com/PkMi3vJURiPIflMIycjK'")
+private String fileStackUrl;
 
 //ToDo: Define a set of colors that this can be... Or potentially pass in hex-code? and "space" is constant with that space hex-code value? Change default value to a hex-code? get with guys on this.
     @Column
