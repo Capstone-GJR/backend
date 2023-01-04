@@ -35,7 +35,6 @@ public class Tote {
     @Column
     private String fileStackUrl;
 
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "space_id", referencedColumnName = "id")
     private Space space;

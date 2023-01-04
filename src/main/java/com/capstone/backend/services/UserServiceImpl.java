@@ -1,6 +1,7 @@
 package com.capstone.backend.services;
 
 import com.capstone.backend.entity.User;
+import com.capstone.backend.exception.EmailExistsException;
 import com.capstone.backend.exception.EntityNotFoundException;
 import com.capstone.backend.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -37,7 +38,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
     public User getUser(Long id) {
         Optional<User> user = userRepository.findById(id);
@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserService {
     public User getUser(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         return unwrapUser(user, email);
+    }
+
+    public void checkEmailExists (String email) throws EmailExistsException {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) throw new EmailExistsException(email);
     }
 
 // Make sure this is working

@@ -1,5 +1,6 @@
 package com.capstone.backend.security;
 
+
 import com.capstone.backend.security.filter.AuthenticationFilter;
 import com.capstone.backend.security.filter.ExceptionHandlerFilter;
 import com.capstone.backend.security.filter.JWTAuthorizationFilter;
@@ -9,37 +10,29 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@EnableWebSecurity
+import java.util.Arrays;
+
 @Configuration
 @AllArgsConstructor
 public class SecurityConfig {
     CustomAuthenticationManager customAuthenticationManager;
 
-
-
-
-    /*
     @Bean
-    CorsConfigurationSource corsConfigurationSource()
-    {
+    CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://traqura.xyz"));
+        configuration.setAllowedOrigins(Arrays.asList("https://localhost:3000"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "HEAD", "OPTIONS"));
-       configuration.setAllowedHeaders(Arrays.asList("*"));
-       configuration.addAllowedHeader("Authorization");
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-	System.out.println("allowed headers " + source.getCorsConfigurations().get("/**").getAllowedHeaders());
         return source;
     }
-*/
-    // .cors(Customizer.withDefaults())
-
-
 
 
     @Bean
@@ -47,18 +40,10 @@ public class SecurityConfig {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
-
-
-
-
             .cors().and()
                 .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
-		.antMatchers(HttpMethod.OPTIONS, "/authenticate").permitAll()
-                .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
-                .antMatchers(HttpMethod.POST, "/authenticate").permitAll()
-                .antMatchers(HttpMethod.GET, SecurityConstants.TEST_PATH).permitAll()
-                        // Allows anyone to make post request on the path sign-up/register
+                .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll() // Allows anyone to make post request on the path sign-up/register
                 .anyRequest().authenticated() )// requires that all requests (other than antMatcher specified requests) be authenticated
                 .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
                 .addFilter(authenticationFilter)

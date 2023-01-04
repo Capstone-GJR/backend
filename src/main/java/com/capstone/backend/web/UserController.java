@@ -3,6 +3,7 @@ package com.capstone.backend.web;
 import com.capstone.backend.dto.UserDTO;
 import com.capstone.backend.entity.Space;
 import com.capstone.backend.entity.User;
+import com.capstone.backend.exception.EmailExistsException;
 import com.capstone.backend.services.SpaceService;
 import com.capstone.backend.services.UserService;
 import lombok.AllArgsConstructor;
@@ -38,7 +39,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> createUser(@Valid@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid@RequestBody User user) throws EmailExistsException {
+        userService.checkEmailExists (user.getEmail());
         Space unassigned = new Space();
         unassigned.setName("unassigned");
         unassigned.setKeywords("unassigned");

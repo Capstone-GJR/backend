@@ -21,5 +21,4 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     @Query(value = "SELECT DISTINCT items.* FROM items JOIN totes t on items.tote_id = t.id JOIN spaces on space_id JOIN users u on u.id = spaces.user_id WHERE user_id =?1", nativeQuery = true)
     List<Item> findAllByUserId (Long user_id);
 
-
 }

@@ -16,5 +16,6 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private UserDTO user;
+//    private List<Space> spaceList;
 
 }
