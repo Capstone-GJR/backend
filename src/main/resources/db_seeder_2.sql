@@ -1,4 +1,4 @@
-USE traqura_db;
+# USE traqura_db;
 
 INSERT INTO users (email, first_name, last_name, password)
 VALUES ('taradactyl@dino.com', 'Tara', 'Dactyl', '$2a$10$wEc65/etNcCBKYLzlHTvvOILPkbi9DyFnIHaLRK8HO7vMArTZJIn2'),
@@ -6,12 +6,12 @@ VALUES ('taradactyl@dino.com', 'Tara', 'Dactyl', '$2a$10$wEc65/etNcCBKYLzlHTvvOI
        ('tri-sara@dino.com', 'Sara', 'Triceratops', '$2a$10$U5H/HJjxrRheOH784Qw1au6Cn0ZJtuDgfyrXh27DszVsTzG1bcIfC'),
        ('v-raptor@dino.com', 'Vicente', 'Raptor', '$2a$10$U5H/HJjxrRheOH784Qw1au6Cn0ZJtuDgfyrXh27DszVsTzG1bcIfC');
 
-INSERT INTO spaces (name, keywords, file_stack_url, user_id)
-VALUES ('living room', 'living room sofa family', 'https://cdn.filestackcontent.com/CoL42emPS7SOaId13J4X', 1),
-       ('Kitchen', 'kitchen', 'https://cdn.filestackcontent.com/f7ImcSd4QViUi9UINJWQ', 1),
-       ('Garage', 'garage christmas tools pool', 'https://cdn.filestackcontent.com/Bpjxpfs7SDS7tgf6r0Lz',  1),
-       ('Office', 'office computer printer work', 'https://cdn.filestackcontent.com/JirYxoAJScW4ZSHnb3oi', 1),
-       ('Master Bedroom', 'bedding', 'https://cdn.filestackcontent.com/5QKgEpFdR0yQE2FpS6Qr', 1);
+INSERT INTO spaces (user_id, name,file_stack_url, keywords)
+VALUES (1, 'living room', 'https://cdn.filestackcontent.com/CoL42emPS7SOaId13J4X', 'sofa, family, tv'),
+       (1, 'Kitchen', 'https://cdn.filestackcontent.com/f7ImcSd4QViUi9UINJWQ', 'lighter'),
+       (1, 'Garage', 'https://cdn.filestackcontent.com/Bpjxpfs7SDS7tgf6r0Lz', 'garage, christmas, tools, pool'),
+       (1, 'Office', 'https://cdn.filestackcontent.com/JirYxoAJScW4ZSHnb3oi', 'office computer printer work'),
+       (1, 'Master Bedroom', 'https://cdn.filestackcontent.com/5QKgEpFdR0yQE2FpS6Qr', 'bedding');
 
 INSERT INTO totes (name, keywords, file_stack_url, space_id)
 VALUES ('TV Stand', 'movies, cds, books, board games', 'https://cdn.filestackcontent.com/nNJFYmhITZCnBi7FPgfT', 1);
