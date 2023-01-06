@@ -28,7 +28,7 @@ public class SpaceServiceImp implements SpaceService {
     public Space editSpace(Long id, Space space, Long user_id) {
         Space dbSpace = getSpace(id);
         dbSpace.setName(space.getName());
-        dbSpace.setKeywords(space.getKeywords());
+        dbSpace.setTags(space.getTags());
         dbSpace.setColor(space.getColor());
         dbSpace.setFileStackUrl(space.getFileStackUrl());
         saveSpace(dbSpace, user_id);

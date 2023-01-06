@@ -28,7 +28,7 @@ public class Space {
     //ToDo: Make this a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
-    private String keywords;
+    private String tags;
 
     // Nullable = optional field. if no image color with display instead.
     @Column(columnDefinition = "varchar(255) default 'https://cdn.filestackcontent.com/PkMi3vJURiPIflMIycjK'")
@@ -52,7 +52,7 @@ public class Space {
         return "Space{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", keywords='" + keywords + '\'' +
+                ", tags='" + tags + '\'' +
                 ", fileStackUrl='" + fileStackUrl + '\'' +
                 ", color='" + color + '\'' +
                 ", user=" + user +

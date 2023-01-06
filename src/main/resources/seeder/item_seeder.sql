@@ -1,2 +1,2 @@
-INSERT INTO items (tote_id, name, file_stack_url, keywords, value)
+INSERT INTO items (tote_id, name, file_stack_url, tags, value)
 VALUES (1, 'Bloom Collection Books','https://cdn.filestackcontent.com/XKLPTpeSvmaVCcKNy0tg', 'Little Women, Anne of Green Gables, A Little Prince, Heidi', 36);

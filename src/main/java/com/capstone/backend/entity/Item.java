@@ -26,9 +26,9 @@ public class Item {
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
-    private String keywords;
+    private String tags;
 
-    @Column(columnDefinition = "varchar(255) default 'https://cdn.filestackcontent.com/PkMi3vJURiPIflMIycjK'")
+    @Column
     private String fileStackUrl;
 
     @Column

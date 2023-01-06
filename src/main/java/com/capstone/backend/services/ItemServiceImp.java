@@ -49,7 +49,7 @@ public class ItemServiceImp implements ItemService{
     public Item editItem(Long id, Long tote_id, Item item) {
         Item dbItem = getItem(id);
         dbItem.setName(item.getName());
-        dbItem.setKeywords(item.getKeywords());
+        dbItem.setTags(item.getTags());
         dbItem.setColor(item.getColor());
         dbItem.setFileStackUrl(item.getFileStackUrl());
         dbItem.setValue(item.getValue());

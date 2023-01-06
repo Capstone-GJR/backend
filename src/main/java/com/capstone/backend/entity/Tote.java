@@ -27,7 +27,7 @@ public class Tote {
 //    ToDo: Is this better as a string? Or a List<String> ... Which would be more easily searchable?
     @NonNull
     @NotBlank(message = "must include at least one keyword")
-    private String keywords;
+    private String tags;
 
     @Column
     private String color;
@@ -49,7 +49,7 @@ public class Tote {
         return "Tote{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", keywords='" + keywords + '\'' +
+                ", tags='" + tags + '\'' +
                 ", color='" + color + '\'' +
                 ", fileStackUrl='" + fileStackUrl + '\'' +
                 ", space=" + space +

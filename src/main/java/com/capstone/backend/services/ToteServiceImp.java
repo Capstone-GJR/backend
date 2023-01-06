@@ -44,7 +44,7 @@ public class ToteServiceImp implements ToteService {
     public Tote editTote(Long space_id, Long id, Tote tote) {
         Tote dbTote = getTote(id); // find original database version of tote
         dbTote.setName(tote.getName());
-        dbTote.setKeywords(tote.getKeywords());
+        dbTote.setTags(tote.getTags());
         dbTote.setColor(tote.getColor());
         dbTote.setFileStackUrl(tote.getFileStackUrl());
         return saveTote(dbTote, space_id);
