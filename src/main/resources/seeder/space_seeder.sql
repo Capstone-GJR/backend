@@ -1,4 +1,4 @@
-INSERT INTO spaces (user_id, name,file_stack_url, keywords)
+INSERT INTO spaces (user_id, name,file_stack_url, tags)
 VALUES (1, 'Living room', 'https://cdn.filestackcontent.com/CoL42emPS7SOaId13J4X', 'sofa, family, tv'),
        (1, 'Kitchen', 'https://cdn.filestackcontent.com/f7ImcSd4QViUi9UINJWQ', 'lighter'),
        (1, 'Garage', 'https://cdn.filestackcontent.com/Bpjxpfs7SDS7tgf6r0Lz', 'garage, christmas, tools, pool'),

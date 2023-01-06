@@ -1,4 +1,4 @@
-INSERT INTO items (tote_id, name, file_stack_url, keywords, value)
+INSERT INTO items (tote_id, name, file_stack_url, tags, value)
 VALUES (1, 'Bloom Collection Books','https://cdn.filestackcontent.com/XKLPTpeSvmaVCcKNy0tg', 'Little Women, Anne of Green Gables, A Little Prince, Heidi', 36),
        (7, 'Cast Iron Grill Pan','https://cdn.filestackcontent.com/wYCJrujnRROhqRonrH4T', 'cast iron, grill, pan, red', 150),
        (7, 'Pan Set','https://cdn.filestackcontent.com/ppZDHNN5RT6f7sQu1pYq', 'red, pots, pans, kitchen, 9 piece', 200),
