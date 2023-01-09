@@ -27,7 +27,7 @@ public class Space {
 
     //ToDo: Make this a List<String> ... Which would be more easily searchable?
     @NonNull
-    @NotBlank(message = "must include at least one keyword")
+    @NotBlank(message = "must include at least one tag")
     private String tags;
 
     // Nullable = optional field. if no image color with display instead.
