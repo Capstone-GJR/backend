@@ -1,4 +1,4 @@
-#Traqura
+# Traqura
 
 A mobile-first home inventory web app that allows users to maintain the location and value of all
 their belongings. The frontend, built using React.js and styled with custom CSS, utilizes Axios to
